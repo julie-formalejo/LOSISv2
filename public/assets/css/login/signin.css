@@ -1,0 +1,1515 @@
+
+/* =========================================================
+   LOSIS SIGN-IN PAGE
+   Spacious Responsive Edition
+   Compatible with updated sign-in.php
+========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+
+/* =========================================================
+   1. DESIGN TOKENS
+========================================================= */
+
+:root {
+    --losis-green: #39852b;
+    --losis-green-dark: #286b1f;
+    --losis-green-bright: #69c94a;
+    --losis-green-soft: #eff9e9;
+
+    --losis-ink: #172033;
+    --losis-muted: #64748b;
+    --losis-line: #e2e8f0;
+    --losis-surface: #ffffff;
+    --losis-page: #f4f7fb;
+
+    --losis-focus: rgba(57, 133, 43, 0.18);
+
+    --losis-radius-sm: 8px;
+    --losis-radius-md: 12px;
+    --losis-radius-lg: 18px;
+    --losis-radius-xl: 24px;
+}
+
+
+/* =========================================================
+   2. RESET AND BASE
+========================================================= */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+body {
+    min-width: 320px;
+    min-height: 100vh;
+    min-height: 100svh;
+    margin: 0;
+    padding: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--losis-ink);
+
+    background:
+        radial-gradient(
+            ellipse at 12% 8%,
+            rgba(126, 217, 87, 0.13),
+            transparent 34%
+        ),
+        radial-gradient(
+            ellipse at 90% 92%,
+            rgba(57, 133, 43, 0.08),
+            transparent 30%
+        ),
+        var(--losis-page);
+
+    font-family:
+        "Inter",
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    font-size: 14px;
+    line-height: 1.6;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+button {
+    -webkit-tap-highlight-color: transparent;
+}
+
+a {
+    color: var(--losis-green);
+    text-underline-offset: 3px;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+    outline: 3px solid var(--losis-focus);
+    outline-offset: 3px;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+
+/* =========================================================
+   3. MAIN SIGN-IN CARD
+========================================================= */
+
+.signin-page {
+    display: grid;
+    grid-template-columns: minmax(0, 0.96fr) minmax(0, 1.04fr);
+    align-items: stretch;
+
+    width: min(1200px, 100%);
+    min-width: 0;
+    min-height: 680px;
+    height: auto;
+
+    /* Center the card without pushing it down */
+    margin: 0 auto;
+
+    overflow: hidden;
+
+    border: 1px solid rgba(226, 232, 240, 0.92);
+    border-radius: var(--losis-radius-xl);
+
+    background: var(--losis-surface);
+
+    box-shadow: 0 20px 55px rgba(15, 23, 42, 0.09);
+}
+
+
+/* =========================================================
+   4. LEFT BRANDING PANEL
+========================================================= */
+
+.signin-showcase {
+    position: relative;
+    isolation: isolate;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    min-width: 0;
+    min-height: 0;
+    gap: 28px;
+
+    padding: 38px 36px;
+
+    overflow: hidden;
+
+    color: #ffffff;
+
+    background:
+        radial-gradient(
+            circle at 85% 15%,
+            rgba(255, 255, 255, 0.14),
+            transparent 28%
+        ),
+        linear-gradient(
+            145deg,
+            #183d20 0%,
+            #276b2b 55%,
+            #39852b 100%
+        );
+}
+
+.signin-showcase::before,
+.signin-showcase::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+.signin-showcase::before {
+    width: 390px;
+    height: 390px;
+    top: 12%;
+    right: -195px;
+}
+
+.signin-showcase::after {
+    width: 270px;
+    height: 270px;
+    top: 25%;
+    right: -135px;
+}
+
+/* Decorative elements from HTML */
+.signin-showcase .showcase-decoration {
+    position: absolute;
+    z-index: -1;
+
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+.signin-showcase .showcase-decoration-one {
+    width: 390px;
+    height: 390px;
+    top: 12%;
+    right: -195px;
+}
+
+.signin-showcase .showcase-decoration-two {
+    width: 270px;
+    height: 270px;
+    top: 25%;
+    right: -135px;
+}
+
+.signin-showcase > * {
+    position: relative;
+    z-index: 1;
+}
+
+
+/* =========================================================
+   5. SHOWCASE CONTENT AND LOGO
+========================================================= */
+
+.showcase-content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-between;
+
+    min-width: 0;
+    gap: 34px;
+}
+
+.showcase-brand {
+    display: flex;
+    align-items: center;
+    min-height: 48px;
+}
+
+.showcase-brand img {
+    width: min(100%, 220px);
+    max-height: 68px;
+
+    object-fit: contain;
+    object-position: left center;
+}
+
+.showcase-copy {
+    max-width: 490px;
+}
+
+.showcase-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-bottom: 18px;
+
+    color: rgba(255, 255, 255, 0.90);
+
+    font-size: 0.78rem;
+    font-weight: 750;
+    letter-spacing: 0.13em;
+    line-height: 1.5;
+}
+
+.status-dot {
+    display: inline-block;
+    flex: 0 0 8px;
+
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #b9f49c;
+    box-shadow: 0 0 0 5px rgba(185, 244, 156, 0.13);
+}
+
+.showcase-copy h1 {
+    max-width: 490px;
+    margin: 0 0 18px;
+
+    color: #ffffff;
+
+    font-size: clamp(2.55rem, 3.4vw, 3.1rem);
+    font-weight: 800;
+    letter-spacing: -0.055em;
+    line-height: 1.08;
+}
+
+.showcase-copy h1 span {
+    display: block;
+    color: #b9f49c;
+}
+
+.showcase-copy > p {
+    max-width: 440px;
+    margin: 0;
+
+    color: rgba(255, 255, 255, 0.86);
+
+    font-size: 0.98rem;
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   6. SHOWCASE FEATURE CARD
+========================================================= */
+
+.showcase-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+
+    min-width: 0;
+    padding: 16px;
+
+    border: 1px solid rgba(255, 255, 255, 0.19);
+    border-radius: 16px;
+
+    background: rgba(255, 255, 255, 0.085);
+
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.feature-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 42px;
+
+    width: 42px;
+    height: 42px;
+
+    border: 1px solid rgba(185, 244, 156, 0.25);
+    border-radius: 12px;
+
+    background: rgba(185, 244, 156, 0.13);
+    color: #c8f5b4;
+
+    font-size: 1.05rem;
+}
+
+.showcase-feature-copy {
+    min-width: 0;
+}
+
+.showcase-feature h2 {
+    margin: 1px 0 6px;
+
+    color: #ffffff;
+
+    font-size: 0.95rem;
+    font-weight: 700;
+    line-height: 1.45;
+}
+
+.showcase-feature p {
+    margin: 0;
+
+    color: rgba(255, 255, 255, 0.80);
+
+    font-size: 0.82rem;
+    line-height: 1.65;
+}
+
+
+/* =========================================================
+   7. LEFT PANEL FOOTER
+========================================================= */
+
+.showcase-footer {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    color: rgba(255, 255, 255, 0.76);
+
+    font-size: 0.76rem;
+    line-height: 1.5;
+}
+
+.showcase-footer > span:first-child {
+    color: #ffffff;
+    font-weight: 750;
+    letter-spacing: 0.09em;
+}
+
+.showcase-footer-divider,
+.footer-separator {
+    display: inline-block;
+    flex: 0 0 4px;
+
+    width: 4px;
+    height: 4px;
+
+    border-radius: 50%;
+    background: currentColor;
+    opacity: 0.65;
+}
+
+
+/* =========================================================
+   8. RIGHT SIGN-IN PANEL
+========================================================= */
+
+.signin-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 0;
+    min-height: 0;
+
+    padding: 36px 42px;
+
+    background: #ffffff;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 440px;
+    min-width: 0;
+
+    margin: 0;
+    padding: 0;
+
+    border: 0;
+    border-radius: 0;
+
+    background: transparent;
+    box-shadow: none;
+
+    animation: losisFadeUp 0.3s ease-out both;
+}
+
+.login-mobile-logo {
+    display: none;
+}
+
+
+/* =========================================================
+   9. SIGN-IN HEADER
+========================================================= */
+
+.login-header {
+    margin-bottom: 24px;
+    text-align: left;
+}
+
+.login-eyebrow {
+    display: block;
+    margin-bottom: 8px;
+
+    color: var(--losis-green);
+
+    font-size: 0.74rem;
+    font-weight: 750;
+    letter-spacing: 0.13em;
+    line-height: 1.5;
+}
+
+.login-header h2 {
+    margin: 0 0 9px;
+
+    color: var(--losis-ink);
+
+    font-size: clamp(1.7rem, 2.2vw, 2rem);
+    font-weight: 750;
+    letter-spacing: -0.045em;
+    line-height: 1.22;
+}
+
+.login-subtitle {
+    margin: 0;
+
+    color: var(--losis-muted);
+
+    font-size: 0.94rem;
+    line-height: 1.65;
+}
+
+
+/* =========================================================
+   10. LOGIN ALERTS
+========================================================= */
+
+.login-alert-wrapper {
+    margin: 0;
+}
+
+.login-alert-container {
+    margin: 0 0 14px;
+}
+
+.login-alert-container:empty {
+    display: none;
+}
+
+
+/* =========================================================
+   11. FORM FIELDS AND LABELS
+========================================================= */
+
+#loginForm {
+    width: 100%;
+    min-width: 0;
+}
+
+#loginForm .field {
+    position: relative;
+    min-width: 0;
+    margin-bottom: 16px;
+}
+
+#loginForm .field > label {
+    display: block;
+    position: static;
+
+    margin: 0 0 7px;
+    padding: 0;
+
+    color: #344256;
+    background: transparent;
+
+    font-size: 0.86rem;
+    font-weight: 650;
+    line-height: 1.45;
+
+    transform: none;
+}
+
+
+/* =========================================================
+   12. INPUTS
+========================================================= */
+
+.input-shell {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    min-width: 0;
+}
+
+.input-shell input {
+    display: block;
+
+    width: 100%;
+    min-width: 0;
+    height: 47px;
+
+    margin: 0;
+    padding: 11px 44px;
+
+    border: 1px solid #dbe3ec;
+    border-radius: 12px;
+    outline: none;
+
+    background: #f9fbfd;
+    color: var(--losis-ink);
+
+    font-family: inherit;
+    font-size: 0.92rem;
+    line-height: 1.4;
+
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.02);
+
+    transition:
+        border-color 0.18s ease,
+        box-shadow 0.18s ease,
+        background-color 0.18s ease;
+}
+
+.input-shell input::placeholder {
+    color: #94a3b8;
+    opacity: 1;
+}
+
+.input-shell input:hover {
+    border-color: #bdcbd9;
+}
+
+.input-shell input:focus {
+    border-color: var(--losis-green-bright);
+    outline: none;
+
+    background: #ffffff;
+    box-shadow: 0 0 0 3px var(--losis-focus);
+}
+
+.input-shell input:-webkit-autofill,
+.input-shell input:-webkit-autofill:hover,
+.input-shell input:-webkit-autofill:focus {
+    -webkit-text-fill-color: var(--losis-ink);
+    transition: background-color 9999s ease-in-out 0s;
+}
+
+.input-shell .icon-left {
+    position: absolute;
+
+    top: 50%;
+    left: 15px;
+    z-index: 2;
+
+    color: #8190a2;
+    font-size: 0.95rem;
+
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   13. PASSWORD VISIBILITY BUTTON
+========================================================= */
+
+.input-shell .password-toggle {
+    position: absolute;
+
+    top: 50%;
+    right: 6px;
+    z-index: 3;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 34px;
+    height: 34px;
+
+    padding: 0;
+
+    border: 0;
+    border-radius: 8px;
+
+    background: transparent;
+    color: #64748b;
+
+    cursor: pointer;
+    transform: translateY(-50%);
+
+    transition:
+        color 0.18s ease,
+        background-color 0.18s ease;
+}
+
+.input-shell .password-toggle:hover {
+    background: var(--losis-green-soft);
+    color: var(--losis-green);
+}
+
+.input-shell .password-toggle:focus-visible {
+    outline: 2px solid var(--losis-green);
+    outline-offset: 2px;
+}
+
+.input-shell .password-toggle i {
+    position: static;
+    font-size: 1rem;
+    transform: none;
+}
+
+
+/* =========================================================
+   14. CAPS LOCK WARNINGS
+========================================================= */
+
+.caps-warning {
+    margin-top: 6px;
+
+    color: #b45309;
+
+    font-size: 0.75rem;
+    line-height: 1.45;
+}
+
+.caps-warning i {
+    margin-right: 4px;
+}
+
+
+/* =========================================================
+   15. REMEMBER ME AND FORGOT PASSWORD
+========================================================= */
+
+.login-options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    gap: 12px;
+    margin: 3px 0 17px;
+}
+
+.login-options .form-check {
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+    min-height: 20px;
+
+    margin: 0;
+    padding: 0;
+}
+
+.login-options .form-check-input {
+    flex: 0 0 17px;
+
+    width: 17px;
+    height: 17px;
+
+    margin: 0;
+    border-color: #cbd5e1;
+
+    cursor: pointer;
+}
+
+.login-options .form-check-input:checked {
+    border-color: var(--losis-green);
+    background-color: var(--losis-green);
+}
+
+.login-options .form-check-label {
+    margin: 0;
+
+    color: #536174;
+
+    font-size: 0.84rem;
+    font-weight: 500;
+    line-height: 1.4;
+
+    cursor: pointer;
+}
+
+.login-options .forgot-link {
+    color: var(--losis-green);
+
+    font-size: 0.84rem;
+    font-weight: 650;
+
+    text-decoration: none;
+}
+
+.login-options .forgot-link:hover {
+    color: var(--losis-green-dark);
+    text-decoration: underline;
+}
+
+
+/* =========================================================
+   16. SIGN-IN BUTTON
+========================================================= */
+
+#loginBtn.btn-success {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    width: 100%;
+    min-height: 48px;
+
+    margin: 0;
+    padding: 11px 18px;
+
+    border: 1px solid var(--losis-green);
+    border-radius: 12px;
+
+    background: linear-gradient(
+        180deg,
+        #69c94a 0%,
+        #39852b 100%
+    );
+
+    color: #ffffff;
+
+    font-family: inherit;
+    font-size: 0.96rem;
+    font-weight: 700;
+    line-height: 1.4;
+
+    box-shadow: 0 6px 16px rgba(57, 133, 43, 0.18);
+
+    transition:
+        transform 0.18s ease,
+        box-shadow 0.18s ease,
+        filter 0.18s ease;
+}
+
+#loginBtn.btn-success:hover {
+    color: #ffffff;
+
+    filter: brightness(1.025);
+    transform: translateY(-1px);
+
+    box-shadow: 0 9px 20px rgba(57, 133, 43, 0.22);
+}
+
+#loginBtn.btn-success:active {
+    transform: translateY(0);
+}
+
+#loginBtn.btn-success:disabled {
+    opacity: 0.72;
+    cursor: not-allowed;
+    transform: none;
+}
+
+#loginBtn .btn-text {
+    visibility: visible;
+}
+
+
+/* =========================================================
+   17. ACCOUNT LOCK COUNTDOWN
+========================================================= */
+
+#lockCountdown {
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 7px;
+
+    margin-top: 10px !important;
+    padding: 9px 11px;
+
+    border: 1px solid #fecaca;
+    border-radius: 9px;
+
+    background: #fff7f7;
+    color: #b91c1c;
+
+    font-size: 0.82rem;
+    line-height: 1.5;
+}
+
+#lockCountdown:not(.d-none) {
+    display: flex !important;
+}
+
+#lockCountdown.d-none {
+    display: none !important;
+}
+
+
+/* =========================================================
+   18. SUPPORT SECTION
+========================================================= */
+
+.login-support {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    margin-top: 16px;
+    padding-top: 15px;
+
+    border-top: 1px solid #edf1f5;
+}
+
+.support-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 38px;
+
+    width: 38px;
+    height: 38px;
+
+    border: 1px solid #e1eedc;
+    border-radius: 11px;
+
+    background: #f3faef;
+    color: var(--losis-green);
+
+    font-size: 1rem;
+}
+
+.support-copy {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    gap: 4px;
+    min-width: 0;
+}
+
+.support-title {
+    color: var(--losis-muted);
+    font-size: 0.8rem;
+    line-height: 1.4;
+}
+
+.support-copy a {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+
+    color: var(--losis-green);
+
+    font-size: 0.86rem;
+    font-weight: 700;
+
+    text-decoration: none;
+}
+
+.support-copy a:hover {
+    color: var(--losis-green-dark);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.support-copy a i {
+    font-size: 0.74rem;
+}
+
+
+/* =========================================================
+   19. SECURITY NOTICE
+========================================================= */
+
+.login-security-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+
+    margin-top: 13px;
+    padding: 11px 12px;
+
+    border: 1px solid #e5eee1;
+    border-radius: 12px;
+
+    background: #f7fbf5;
+    color: #52634d;
+
+    font-size: 0.78rem;
+    line-height: 1.6;
+}
+
+.login-security-note > i {
+    flex: 0 0 auto;
+
+    margin-top: 3px;
+
+    color: var(--losis-green);
+    font-size: 0.92rem;
+}
+
+.login-security-note p {
+    min-width: 0;
+    margin: 0;
+
+    color: #52634d;
+
+    font-size: 0.78rem;
+    line-height: 1.6;
+
+    overflow-wrap: anywhere;
+}
+
+
+/* =========================================================
+   20. RIGHT PANEL FOOTER
+========================================================= */
+
+.signin-main > .signin-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 9px;
+
+    width: 100%;
+    max-width: 440px;
+
+    margin-top: 12px;
+
+    color: #94a3b8;
+
+    font-size: 0.74rem;
+    line-height: 1.6;
+    text-align: center;
+}
+
+
+/* =========================================================
+   21. DESKTOP LAYOUT
+========================================================= */
+
+@media (min-width: 761px) {
+    body {
+        padding: 20px;
+    }
+
+    .signin-page {
+        width: min(1200px, 100%);
+        min-height: 680px;
+        margin: 0 auto;
+    }
+}
+
+
+/* =========================================================
+   22. SHORT LAPTOP SCREENS
+   Reduce spacing only when viewport height is limited.
+========================================================= */
+
+@media (min-width: 761px) and (max-height: 800px) {
+    body {
+        padding: 12px;
+    }
+
+    .signin-page {
+        min-height: 0;
+    }
+
+    .signin-showcase {
+        padding: 26px 30px;
+        gap: 20px;
+    }
+
+    .showcase-content {
+        gap: 22px;
+    }
+
+    .showcase-brand img {
+        max-height: 54px;
+    }
+
+    .showcase-copy h1 {
+        font-size: clamp(2.2rem, 2.8vw, 2.65rem);
+        margin-bottom: 12px;
+    }
+
+    .showcase-copy > p {
+        font-size: 0.9rem;
+        line-height: 1.65;
+    }
+
+    .showcase-feature {
+        padding: 13px;
+    }
+
+    .signin-main {
+        padding: 24px 30px;
+    }
+
+    .login-header {
+        margin-bottom: 17px;
+    }
+
+    #loginForm .field {
+        margin-bottom: 12px;
+    }
+
+    .input-shell input {
+        height: 43px;
+    }
+
+    .login-options {
+        margin-bottom: 12px;
+    }
+
+    #loginBtn.btn-success {
+        min-height: 43px;
+    }
+
+    .login-support {
+        margin-top: 11px;
+        padding-top: 10px;
+    }
+
+    .login-security-note {
+        margin-top: 9px;
+        padding: 8px 10px;
+    }
+
+    .signin-main > .signin-footer {
+        margin-top: 8px;
+    }
+}
+
+
+/* =========================================================
+   23. VERY SHORT DESKTOP SCREENS
+========================================================= */
+
+@media (min-width: 761px) and (max-height: 620px) {
+    body {
+        padding: 8px;
+        align-items: flex-start;
+    }
+
+    .signin-page {
+        min-height: 0;
+    }
+
+    .signin-showcase {
+        padding: 18px 24px;
+        gap: 14px;
+    }
+
+    .showcase-content {
+        gap: 15px;
+    }
+
+    .showcase-brand img {
+        max-height: 40px;
+    }
+
+    .showcase-eyebrow {
+        margin-bottom: 10px;
+    }
+
+    .showcase-copy h1 {
+        font-size: 1.9rem;
+        margin-bottom: 9px;
+    }
+
+    .showcase-copy > p {
+        font-size: 0.8rem;
+        line-height: 1.5;
+    }
+
+    .showcase-feature {
+        padding: 9px 10px;
+    }
+
+    .feature-icon {
+        flex-basis: 36px;
+        width: 36px;
+        height: 36px;
+    }
+
+    .signin-main {
+        padding: 14px 24px;
+    }
+
+    .login-header {
+        margin-bottom: 10px;
+    }
+
+    .login-eyebrow {
+        margin-bottom: 4px;
+    }
+
+    .login-header h2 {
+        font-size: 1.4rem;
+    }
+
+    .login-subtitle {
+        font-size: 0.8rem;
+    }
+
+    #loginForm .field {
+        margin-bottom: 8px;
+    }
+
+    #loginForm .field > label {
+        margin-bottom: 4px;
+    }
+
+    .input-shell input {
+        height: 37px;
+        padding-top: 7px;
+        padding-bottom: 7px;
+    }
+
+    .login-options {
+        margin-bottom: 8px;
+    }
+
+    #loginBtn.btn-success {
+        min-height: 37px;
+        padding: 8px 14px;
+    }
+
+    .login-support {
+        margin-top: 7px;
+        padding-top: 7px;
+    }
+
+    .support-icon {
+        flex-basis: 32px;
+        width: 32px;
+        height: 32px;
+    }
+
+    .login-security-note {
+        margin-top: 6px;
+        padding: 6px 8px;
+        font-size: 0.7rem;
+    }
+
+    .login-security-note p {
+        font-size: 0.7rem;
+    }
+
+    .signin-main > .signin-footer {
+        margin-top: 5px;
+    }
+}
+
+
+/* =========================================================
+   24. TABLET
+========================================================= */
+
+@media (max-width: 900px) and (min-width: 761px) {
+    .signin-page {
+        grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    }
+
+    .signin-showcase {
+        padding-right: 24px;
+        padding-left: 24px;
+    }
+
+    .signin-main {
+        padding-right: 24px;
+        padding-left: 24px;
+    }
+
+    .showcase-copy h1 {
+        font-size: clamp(2rem, 3vw, 2.4rem);
+    }
+}
+
+
+/* =========================================================
+   25. MOBILE LAYOUT
+========================================================= */
+
+@media (max-width: 760px) {
+    body {
+        display: block;
+        padding: 12px;
+    }
+
+    .signin-page {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+
+        width: min(540px, 100%);
+        min-height: 0;
+        height: auto;
+
+        margin: 0 auto;
+        border-radius: 20px;
+    }
+
+    .signin-showcase {
+        min-height: 0;
+        gap: 22px;
+        padding: 26px 24px;
+    }
+
+    .showcase-content {
+        flex: initial;
+        gap: 24px;
+    }
+
+    .showcase-brand img {
+        width: min(100%, 180px);
+        max-height: 54px;
+    }
+
+    .showcase-copy h1 {
+        font-size: 2.2rem;
+        margin-bottom: 12px;
+    }
+
+    .showcase-copy > p {
+        font-size: 0.88rem;
+        line-height: 1.65;
+    }
+
+    .showcase-eyebrow {
+        margin-bottom: 13px;
+    }
+
+    .showcase-feature {
+        padding: 13px;
+    }
+
+    .showcase-footer {
+        margin-top: 0;
+    }
+
+    .signin-main {
+        justify-content: flex-start;
+        padding: 28px 24px;
+    }
+
+    .login-card {
+        max-width: none;
+        animation: none;
+    }
+
+    .login-header {
+        margin-bottom: 20px;
+    }
+
+    .login-header h2 {
+        font-size: 1.65rem;
+    }
+
+    .input-shell input {
+        height: 46px;
+        font-size: 16px;
+    }
+
+    .login-options {
+        align-items: center;
+    }
+
+    .signin-main > .signin-footer {
+        margin-top: 16px;
+    }
+}
+
+
+/* =========================================================
+   26. SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+    body {
+        padding: 8px;
+    }
+
+    .signin-page {
+        border-radius: 16px;
+    }
+
+    .signin-showcase {
+        padding: 22px 19px;
+        gap: 20px;
+    }
+
+    .showcase-content {
+        gap: 22px;
+    }
+
+    .showcase-brand img {
+        width: 155px;
+        max-height: 48px;
+    }
+
+    .showcase-copy h1 {
+        font-size: 1.95rem;
+    }
+
+    .showcase-copy > p {
+        font-size: 0.84rem;
+    }
+
+    .showcase-feature {
+        gap: 10px;
+        padding: 11px;
+    }
+
+    .feature-icon {
+        flex-basis: 36px;
+        width: 36px;
+        height: 36px;
+    }
+
+    .showcase-feature h2 {
+        font-size: 0.86rem;
+    }
+
+    .showcase-feature p {
+        font-size: 0.75rem;
+    }
+
+    .signin-main {
+        padding: 24px 18px;
+    }
+
+    .login-header {
+        margin-bottom: 18px;
+    }
+
+    .login-header h2 {
+        font-size: 1.48rem;
+    }
+
+    #loginForm .field {
+        margin-bottom: 14px;
+    }
+
+    .login-options {
+        gap: 10px;
+        margin-bottom: 14px;
+    }
+
+    .login-options .forgot-link {
+        margin-left: auto;
+    }
+
+    .login-support {
+        margin-top: 14px;
+        padding-top: 12px;
+    }
+
+    .login-security-note {
+        margin-top: 11px;
+        padding: 9px;
+    }
+}
+
+
+/* =========================================================
+   27. VERY SMALL SCREENS
+========================================================= */
+
+@media (max-width: 360px) {
+    body {
+        padding: 6px;
+    }
+
+    .signin-showcase,
+    .signin-main {
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+
+    .showcase-copy h1 {
+        font-size: 1.75rem;
+    }
+
+    .login-header h2 {
+        font-size: 1.34rem;
+    }
+
+    .input-shell input {
+        padding-left: 36px;
+        padding-right: 38px;
+    }
+
+    .input-shell .icon-left {
+        left: 11px;
+    }
+
+    .login-options {
+        flex-wrap: wrap;
+    }
+}
+
+
+/* =========================================================
+   28. ANIMATION AND ACCESSIBILITY
+========================================================= */
+
+@keyframes losisFadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation: none !important;
+        transition-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}

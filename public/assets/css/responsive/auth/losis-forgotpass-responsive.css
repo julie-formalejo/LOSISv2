@@ -1,0 +1,993 @@
+/* =========================================================
+   LOSIS FORGOT PASSWORD
+   COMPLETE RESPONSIVE STYLESHEET
+
+   File:
+   assets/css/responsive/losis-forgotpass-responsive.css
+
+   Responsive support:
+   - Small phones: 300px and above
+   - Standard and large phones
+   - Tablets and foldable devices
+   - Laptops and desktops
+   - Large and ultrawide screens
+   - Portrait and landscape
+   - Short and tall viewports
+
+   Load AFTER:
+   assets/css/login/forgot-password.css
+========================================================= */
+
+
+/* =========================================================
+   1. GLOBAL RESET
+========================================================= */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    min-height: 100%;
+
+    overflow-x: clip;
+
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+body {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    margin: 0;
+    overflow-x: clip;
+}
+
+img,
+svg,
+video,
+canvas {
+    max-width: 100%;
+}
+
+img {
+    height: auto;
+}
+
+input,
+button,
+select,
+textarea {
+    box-sizing: border-box;
+    max-width: 100%;
+    font: inherit;
+}
+
+button,
+input[type="submit"] {
+    touch-action: manipulation;
+}
+
+
+/* =========================================================
+   2. RESPONSIVE VARIABLES
+========================================================= */
+
+:root {
+    --forgot-page-gap: clamp(6px, 2vw, 28px);
+
+    --forgot-card-padding: clamp(22px, 4vw, 42px);
+
+    --forgot-mobile-padding: clamp(14px, 4vw, 22px);
+
+    --forgot-card-radius: clamp(12px, 2vw, 24px);
+
+    --forgot-card-max-width: 500px;
+
+    --forgot-input-height: 49px;
+
+    --forgot-focus-ring:
+        0 0 0 3px rgba(57, 133, 43, 0.18);
+}
+
+
+/* =========================================================
+   3. OVERFLOW PROTECTION
+========================================================= */
+
+.forgot-page,
+.forgot-card,
+.forgot-header,
+.forgot-brand,
+.forgot-header h1,
+.forgot-header p,
+#forgotForm,
+#forgotForm .field,
+.forgot-input-shell,
+.forgot-field-help,
+.forgot-submit-btn,
+.bottom-text,
+.forgot-security-note {
+    box-sizing: border-box;
+    min-width: 0;
+    max-width: 100%;
+}
+
+.forgot-header h1,
+.forgot-header p,
+.forgot-field-help,
+.bottom-text,
+.forgot-security-note,
+.forgot-security-note p {
+    overflow-wrap: anywhere;
+}
+
+
+/* =========================================================
+   4. PAGE LAYOUT
+   Desktop and tablet: centered card
+========================================================= */
+
+body {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: var(--forgot-page-gap);
+}
+
+.forgot-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex: 1 0 auto;
+
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    min-height: calc(
+        100vh - (2 * var(--forgot-page-gap))
+    );
+
+    min-height: calc(
+        100dvh - (2 * var(--forgot-page-gap))
+    );
+
+    margin: auto;
+    padding: 0;
+}
+
+.forgot-card {
+    display: block;
+
+    width: 100%;
+    max-width: var(--forgot-card-max-width);
+    min-width: 0;
+
+    height: auto;
+    min-height: 0;
+
+    margin: auto;
+    padding: var(--forgot-card-padding);
+
+    overflow: hidden;
+    border-radius: var(--forgot-card-radius);
+}
+
+
+/* =========================================================
+   5. LOGO AND HEADER
+========================================================= */
+
+.forgot-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+    max-width: 100%;
+
+    margin: 0 0 26px;
+    text-align: center;
+}
+
+.forgot-brand {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    max-width: 100%;
+
+    margin: 0 0 20px;
+    padding: 0;
+}
+
+.forgot-brand img {
+    display: block;
+
+    width: min(100%, 180px);
+    max-width: 100%;
+    max-height: 68px;
+
+    object-fit: contain;
+    object-position: center;
+}
+
+.forgot-header h1 {
+    width: 100%;
+    max-width: 100%;
+
+    margin: 0 0 9px;
+
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    line-height: 1.25;
+    letter-spacing: -0.035em;
+
+    overflow-wrap: anywhere;
+}
+
+.forgot-header p {
+    width: 100%;
+    max-width: 100%;
+
+    margin: 0;
+
+    font-size: clamp(0.84rem, 1.5vw, 0.96rem);
+    line-height: 1.55;
+}
+
+
+/* =========================================================
+   6. FORM
+========================================================= */
+
+#forgotForm {
+    display: block;
+
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    margin: 0;
+    padding: 0;
+}
+
+#forgotForm .field {
+    position: relative;
+    display: block;
+
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    margin: 0 0 20px;
+    padding: 0;
+}
+
+#forgotForm .field > label {
+    display: block;
+    position: static;
+
+    width: 100%;
+    max-width: 100%;
+
+    margin: 0 0 8px;
+    padding: 0;
+
+    font-size: clamp(0.82rem, 1vw, 0.9rem);
+    font-weight: 650;
+    line-height: 1.45;
+
+    transform: none;
+}
+
+
+/* =========================================================
+   7. EMAIL INPUT
+========================================================= */
+
+.forgot-input-shell {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    margin: 0;
+    padding: 0;
+}
+
+.forgot-input-shell .icon-left {
+    position: absolute;
+
+    top: 50%;
+    left: 14px;
+
+    z-index: 2;
+
+    flex: 0 0 auto;
+
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.forgot-input-shell input {
+    display: block;
+
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    height: var(--forgot-input-height);
+
+    margin: 0;
+    padding: 11px 12px 11px 43px;
+
+    font-size: 16px;
+    line-height: 1.4;
+
+    border-radius: 12px;
+}
+
+.forgot-input-shell input:focus {
+    outline: none;
+    box-shadow: var(--forgot-focus-ring);
+}
+
+
+/* =========================================================
+   8. FIELD HELP TEXT
+========================================================= */
+
+.forgot-field-help {
+    display: block;
+
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    margin: 7px 0 0;
+    padding: 0;
+
+    font-size: clamp(0.72rem, 0.9vw, 0.8rem);
+    line-height: 1.5;
+
+    overflow-wrap: anywhere;
+}
+
+
+/* =========================================================
+   9. SUBMIT BUTTON
+========================================================= */
+
+.forgot-submit-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    min-height: 48px;
+
+    margin: 0;
+    padding: 12px 16px;
+
+    text-align: center;
+    white-space: normal;
+    overflow-wrap: anywhere;
+
+    touch-action: manipulation;
+}
+
+.forgot-submit-text {
+    display: inline-block;
+
+    max-width: 100%;
+    min-width: 0;
+
+    overflow-wrap: anywhere;
+}
+
+.forgot-submit-btn:disabled {
+    cursor: not-allowed;
+}
+
+
+/* =========================================================
+   10. BACK TO LOGIN
+========================================================= */
+
+.bottom-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    margin: 20px 0 0;
+    padding: 0;
+
+    text-align: center;
+}
+
+.bottom-text a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    max-width: 100%;
+    min-width: 0;
+
+    gap: 8px;
+
+    font-size: clamp(0.82rem, 1vw, 0.9rem);
+    line-height: 1.5;
+
+    text-decoration: none;
+    overflow-wrap: anywhere;
+}
+
+.bottom-text a i {
+    flex: 0 0 auto;
+}
+
+
+/* =========================================================
+   11. SECURITY REMINDER
+========================================================= */
+
+.forgot-security-note {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    gap: 10px;
+
+    margin: 26px 0 0;
+    padding: 12px;
+
+    border-radius: 12px;
+
+    font-size: clamp(0.76rem, 0.95vw, 0.84rem);
+    line-height: 1.5;
+}
+
+.forgot-security-note > i {
+    flex: 0 0 auto;
+    margin-top: 3px;
+}
+
+.forgot-security-note p {
+    flex: 1 1 0;
+
+    width: 0;
+    min-width: 0;
+    max-width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    font-size: inherit;
+    line-height: inherit;
+
+    overflow-wrap: anywhere;
+}
+
+
+/* =========================================================
+   12. TABLETS AND COMPACT LAPTOPS
+========================================================= */
+
+@media (min-width: 761px) and (max-width: 1024px) {
+    :root {
+        --forgot-card-padding: clamp(24px, 3.5vw, 36px);
+    }
+
+    .forgot-card {
+        max-width: 480px;
+    }
+
+    .forgot-brand img {
+        width: min(100%, 170px);
+    }
+}
+
+
+/* =========================================================
+   13. MOBILE LAYOUT
+   IMPORTANT:
+   Keep flex centering instead of switching to display:block.
+========================================================= */
+
+@media (max-width: 760px) {
+    html,
+    body {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+    }
+
+    body {
+        display: flex !important;
+        flex-direction: column !important;
+
+        align-items: stretch !important;
+        justify-content: center !important;
+
+        min-height: 100vh !important;
+        min-height: 100dvh !important;
+
+        padding: 8px !important;
+    }
+
+    .forgot-page {
+        display: flex !important;
+
+        flex: 1 0 auto !important;
+
+        align-items: center !important;
+        justify-content: center !important;
+
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+
+        min-height: calc(100vh - 16px) !important;
+        min-height: calc(100dvh - 16px) !important;
+
+        height: auto !important;
+
+        margin: 0 auto !important;
+        padding: 0 !important;
+    }
+
+    .forgot-card {
+        display: block !important;
+
+        width: 100% !important;
+        max-width: 500px !important;
+        min-width: 0 !important;
+
+        height: auto !important;
+        min-height: 0 !important;
+
+        margin: auto !important;
+        padding: clamp(16px, 4vw, 22px) !important;
+
+        overflow: hidden !important;
+        border-radius: 18px;
+    }
+
+    .forgot-header {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+
+        margin: 0 0 22px !important;
+    }
+
+    .forgot-brand {
+        width: 100% !important;
+        max-width: 100% !important;
+
+        margin: 0 0 15px !important;
+    }
+
+    .forgot-brand img {
+        width: min(100%, 155px) !important;
+        max-width: 100% !important;
+        max-height: 48px !important;
+    }
+
+    .forgot-header h1 {
+        width: 100% !important;
+        max-width: 100% !important;
+
+        margin: 0 0 7px !important;
+
+        font-size: clamp(1.35rem, 5vw, 1.75rem) !important;
+        line-height: 1.25 !important;
+    }
+
+    .forgot-header p {
+        width: 100% !important;
+        max-width: 100% !important;
+
+        font-size: clamp(0.8rem, 2.5vw, 0.9rem) !important;
+        line-height: 1.5 !important;
+    }
+
+    #forgotForm,
+    #forgotForm .field,
+    .forgot-input-shell,
+    .forgot-field-help,
+    .forgot-submit-btn,
+    .bottom-text,
+    .forgot-security-note {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+    }
+
+    #forgotForm .field {
+        margin: 0 0 18px !important;
+    }
+
+    #forgotForm .field > label {
+        margin-bottom: 7px !important;
+        font-size: 0.83rem !important;
+    }
+
+    .forgot-input-shell input {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+
+        height: 47px !important;
+
+        padding: 10px 12px 10px 39px !important;
+
+        font-size: 16px !important;
+    }
+
+    .forgot-input-shell .icon-left {
+        left: 12px !important;
+    }
+
+    .forgot-field-help {
+        margin-top: 6px !important;
+
+        font-size: 0.73rem !important;
+        line-height: 1.45 !important;
+    }
+
+    .forgot-submit-btn {
+        min-height: 47px !important;
+
+        margin: 0 !important;
+        padding: 11px 12px !important;
+
+        font-size: 0.9rem;
+    }
+
+    .bottom-text {
+        margin: 17px 0 0 !important;
+    }
+
+    .bottom-text a {
+        gap: 7px;
+        min-height: 38px;
+        font-size: 0.83rem !important;
+    }
+
+    .forgot-security-note {
+        align-items: flex-start;
+
+        gap: 9px;
+
+        margin: 20px 0 0 !important;
+        padding: 10px !important;
+
+        font-size: 0.74rem !important;
+        line-height: 1.5 !important;
+    }
+
+    .forgot-security-note > i {
+        margin-top: 3px;
+    }
+
+    .forgot-security-note p {
+        flex: 1 1 0;
+
+        width: 0;
+        min-width: 0;
+        max-width: 100%;
+    }
+}
+
+
+/* =========================================================
+   14. SMALL PHONES
+   361px–480px
+========================================================= */
+
+@media (min-width: 361px) and (max-width: 480px) {
+    body {
+        padding: 8px !important;
+    }
+
+    .forgot-card {
+        padding: 18px !important;
+    }
+
+    .forgot-brand img {
+        width: min(100%, 150px) !important;
+    }
+
+    .forgot-header {
+        margin-bottom: 20px !important;
+    }
+
+    .forgot-security-note {
+        margin-top: 19px !important;
+    }
+}
+
+
+/* =========================================================
+   15. EXTRA-SMALL PHONES
+   300px–360px
+========================================================= */
+
+@media (max-width: 360px) {
+    body {
+        padding: 4px !important;
+    }
+
+    .forgot-page {
+        min-height: calc(100vh - 8px) !important;
+        min-height: calc(100dvh - 8px) !important;
+    }
+
+    .forgot-card {
+        padding: 13px !important;
+        border-radius: 12px !important;
+    }
+
+    .forgot-brand {
+        margin-bottom: 12px !important;
+    }
+
+    .forgot-brand img {
+        width: min(100%, 135px) !important;
+        max-height: 42px !important;
+    }
+
+    .forgot-header {
+        margin-bottom: 18px !important;
+    }
+
+    .forgot-header h1 {
+        font-size: clamp(1.22rem, 6vw, 1.42rem) !important;
+    }
+
+    .forgot-header p {
+        font-size: 0.77rem !important;
+    }
+
+    #forgotForm .field {
+        margin-bottom: 16px !important;
+    }
+
+    #forgotForm .field > label {
+        font-size: 0.79rem !important;
+    }
+
+    .forgot-input-shell input {
+        height: 45px !important;
+        padding-left: 34px !important;
+        padding-right: 8px !important;
+    }
+
+    .forgot-input-shell .icon-left {
+        left: 10px !important;
+    }
+
+    .forgot-field-help {
+        font-size: 0.69rem !important;
+    }
+
+    .forgot-submit-btn {
+        min-height: 45px !important;
+        padding: 10px 8px !important;
+        font-size: 0.81rem !important;
+    }
+
+    .bottom-text {
+        margin-top: 14px !important;
+    }
+
+    .bottom-text a {
+        font-size: 0.77rem !important;
+    }
+
+    .forgot-security-note {
+        gap: 8px !important;
+        margin-top: 16px !important;
+        padding: 9px !important;
+        font-size: 0.69rem !important;
+    }
+}
+
+
+/* =========================================================
+   16. MOBILE LANDSCAPE
+========================================================= */
+
+@media (max-width: 760px) and (orientation: landscape) {
+    body {
+        display: flex !important;
+        flex-direction: column !important;
+
+        align-items: stretch !important;
+        justify-content: flex-start !important;
+
+        padding: 6px !important;
+    }
+
+    .forgot-page {
+        flex: 0 0 auto !important;
+
+        align-items: flex-start !important;
+        justify-content: center !important;
+
+        min-height: calc(100vh - 12px) !important;
+        min-height: calc(100dvh - 12px) !important;
+
+        margin: 0 auto !important;
+    }
+
+    .forgot-card {
+        width: 100% !important;
+        max-width: 500px !important;
+
+        margin: 0 auto !important;
+        padding: 16px !important;
+    }
+
+    .forgot-header {
+        margin-bottom: 15px !important;
+    }
+
+    .forgot-brand {
+        margin-bottom: 10px !important;
+    }
+
+    .forgot-brand img {
+        max-height: 38px !important;
+    }
+
+    .forgot-header h1 {
+        margin-bottom: 5px !important;
+    }
+
+    .forgot-header p {
+        line-height: 1.4 !important;
+    }
+
+    #forgotForm .field {
+        margin-bottom: 13px !important;
+    }
+
+    .bottom-text {
+        margin-top: 12px !important;
+    }
+
+    .forgot-security-note {
+        margin-top: 14px !important;
+    }
+}
+
+
+/* =========================================================
+   17. SHORT VIEWPORTS
+   Allow vertical scrolling when the card is taller
+   than the available viewport.
+========================================================= */
+
+@media (max-height: 600px) {
+    body {
+        justify-content: flex-start;
+    }
+
+    .forgot-page {
+        flex: 0 0 auto;
+        align-items: flex-start;
+    }
+
+    .forgot-card {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .forgot-header {
+        margin-bottom: 15px;
+    }
+
+    .forgot-brand {
+        margin-bottom: 10px;
+    }
+
+    .forgot-brand img {
+        max-height: 38px;
+    }
+
+    .forgot-header h1 {
+        margin-bottom: 5px;
+    }
+
+    #forgotForm .field {
+        margin-bottom: 13px;
+    }
+
+    .bottom-text {
+        margin-top: 12px;
+    }
+
+    .forgot-security-note {
+        margin-top: 14px;
+    }
+}
+
+
+/* =========================================================
+   18. TOUCH AND KEYBOARD ACCESSIBILITY
+========================================================= */
+
+@media (hover: none) and (pointer: coarse) {
+    .forgot-submit-btn {
+        min-height: 47px;
+    }
+
+    .bottom-text a {
+        min-height: 40px;
+    }
+}
+
+.forgot-brand:focus-visible,
+.bottom-text a:focus-visible,
+.forgot-input-shell input:focus-visible,
+.forgot-submit-btn:focus-visible {
+    outline: 3px solid rgba(57, 133, 43, 0.35);
+    outline-offset: 2px;
+}
+
+
+/* =========================================================
+   19. REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+
+/* =========================================================
+   END OF LOSIS FORGOT PASSWORD RESPONSIVE CSS
+========================================================= */

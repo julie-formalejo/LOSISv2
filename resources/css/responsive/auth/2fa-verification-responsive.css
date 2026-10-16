@@ -1,0 +1,1197 @@
+/* =========================================================
+   LOSIS TWO-FACTOR AUTHENTICATION
+   COMPLETE RESPONSIVE STYLESHEET
+
+   File:
+   assets/css/responsive/losis-2fa-responsive.css
+
+   Supports:
+   - Small phones: 300px and above
+   - Standard and large smartphones
+   - Tablets and foldable devices
+   - Laptops and desktops
+   - Portrait and landscape orientation
+   - Short and tall viewports
+
+   Load AFTER:
+   assets/css/login/2factorauth.css
+========================================================= */
+
+
+/* =========================================================
+   1. GLOBAL RESET
+========================================================= */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    min-height: 100%;
+
+    overflow-x: clip;
+
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+body {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    margin: 0;
+    overflow-x: clip;
+}
+
+img,
+svg,
+video,
+canvas {
+    max-width: 100%;
+}
+
+img {
+    height: auto;
+}
+
+input,
+button,
+select,
+textarea {
+    box-sizing: border-box;
+    max-width: 100%;
+    font: inherit;
+}
+
+button,
+a {
+    touch-action: manipulation;
+}
+
+
+/* =========================================================
+   2. RESPONSIVE VARIABLES
+========================================================= */
+
+:root {
+    --otp-page-gap: clamp(6px, 2vw, 28px);
+
+    --otp-card-padding: clamp(22px, 4vw, 40px);
+
+    --otp-card-max-width: 500px;
+
+    --otp-card-radius: clamp(12px, 2vw, 24px);
+
+    --otp-input-gap: clamp(5px, 1.5vw, 10px);
+
+    --otp-input-size: clamp(36px, 9vw, 48px);
+
+    --otp-focus-ring:
+        0 0 0 3px rgba(57, 133, 43, 0.18);
+}
+
+
+/* =========================================================
+   3. OVERFLOW PROTECTION
+========================================================= */
+
+.otp-page,
+.otp-card,
+.otp-header,
+.otp-logo,
+.otp-header h1,
+.otp-header p,
+.otp-method-section,
+.otp-methods,
+.otp-info,
+.otp-info-content,
+.otp-code-section,
+.otp-input-group,
+.otp-timer,
+#verifyBtn,
+.resend-text,
+.otp-security {
+    box-sizing: border-box;
+    min-width: 0;
+    max-width: 100%;
+}
+
+.otp-header h1,
+.otp-header p,
+.otp-info-content,
+#otpDestination,
+.resend-text,
+.otp-security,
+.otp-security span {
+    overflow-wrap: anywhere;
+}
+
+
+/* =========================================================
+   4. PAGE LAYOUT
+   Center the card when there is enough viewport space.
+========================================================= */
+
+body {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: var(--otp-page-gap);
+}
+
+.otp-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex: 1 0 auto;
+
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    min-height: calc(
+        100vh - (2 * var(--otp-page-gap))
+    );
+
+    min-height: calc(
+        100dvh - (2 * var(--otp-page-gap))
+    );
+
+    margin: auto;
+    padding: 0;
+}
+
+.otp-card {
+    display: block;
+
+    width: 100%;
+    max-width: var(--otp-card-max-width);
+    min-width: 0;
+
+    height: auto;
+    min-height: 0;
+
+    margin: auto;
+    padding: var(--otp-card-padding);
+
+    overflow: hidden;
+    border-radius: var(--otp-card-radius);
+}
+
+
+/* =========================================================
+   5. HEADER AND LOGO
+========================================================= */
+
+.otp-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    margin: 0 0 24px;
+
+    text-align: center;
+}
+
+.otp-logo {
+    display: block;
+
+    width: min(100%, 165px);
+    max-width: 100%;
+    max-height: 62px;
+
+    margin: 0 auto 18px;
+
+    object-fit: contain;
+    object-position: center;
+}
+
+.otp-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex: 0 0 auto;
+
+    width: clamp(44px, 10vw, 54px);
+    height: clamp(44px, 10vw, 54px);
+
+    margin: 0 auto 15px;
+
+    border-radius: 16px;
+}
+
+.otp-icon i {
+    font-size: clamp(1.15rem, 4vw, 1.45rem);
+}
+
+.otp-header h1 {
+    width: 100%;
+    max-width: 100%;
+
+    margin: 0 0 9px;
+
+    font-size: clamp(1.35rem, 3.5vw, 1.9rem);
+    line-height: 1.25;
+    letter-spacing: -0.035em;
+
+    overflow-wrap: anywhere;
+}
+
+.otp-header p {
+    width: 100%;
+    max-width: 100%;
+
+    margin: 0;
+
+    font-size: clamp(0.82rem, 1.5vw, 0.94rem);
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   6. VERIFICATION METHOD
+========================================================= */
+
+.otp-method-section {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    margin: 0 0 17px;
+    padding: 0;
+}
+
+.otp-methods {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    gap: 8px;
+}
+
+.method-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    flex: 1 1 auto;
+
+    min-width: 0;
+    max-width: 100%;
+
+    gap: 8px;
+
+    padding: 11px 14px;
+
+    text-align: center;
+    white-space: normal;
+    overflow-wrap: anywhere;
+}
+
+.method-btn i {
+    flex: 0 0 auto;
+}
+
+
+/* =========================================================
+   7. DESTINATION INFORMATION
+========================================================= */
+
+.otp-info {
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    gap: 12px;
+
+    margin: 0 0 21px;
+    padding: 13px;
+
+    border-radius: 12px;
+}
+
+.otp-info-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex: 0 0 38px;
+
+    width: 38px;
+    height: 38px;
+
+    border-radius: 11px;
+}
+
+.otp-info-icon i {
+    font-size: 1rem;
+}
+
+.otp-info-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    flex: 1 1 auto;
+
+    width: 0;
+    min-width: 0;
+    max-width: 100%;
+
+    gap: 4px;
+}
+
+.otp-info-label {
+    display: block;
+
+    width: 100%;
+    max-width: 100%;
+
+    font-size: clamp(0.7rem, 1vw, 0.78rem);
+    line-height: 1.45;
+
+    overflow-wrap: anywhere;
+}
+
+#otpDestination {
+    display: block;
+
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    font-size: clamp(0.8rem, 1.1vw, 0.9rem);
+    line-height: 1.5;
+
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+
+/* =========================================================
+   8. OTP INPUT SECTION
+========================================================= */
+
+.otp-code-section {
+    display: block;
+
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    margin: 0 0 16px;
+    padding: 0;
+}
+
+.otp-code-label {
+    display: block;
+
+    width: 100%;
+    max-width: 100%;
+
+    margin: 0 0 11px;
+    padding: 0;
+
+    font-size: clamp(0.82rem, 1vw, 0.9rem);
+    font-weight: 650;
+    line-height: 1.5;
+
+    text-align: left;
+    overflow-wrap: anywhere;
+}
+
+.otp-input-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    gap: var(--otp-input-gap);
+
+    margin: 0;
+    padding: 0;
+}
+
+.otp-input {
+    display: block;
+
+    flex: 1 1 0;
+
+    width: 0;
+    min-width: 0;
+    max-width: 52px;
+
+    height: clamp(40px, 10vw, 52px);
+
+    margin: 0;
+    padding: 0 2px;
+
+    border-radius: 10px;
+
+    font-size: clamp(1rem, 4vw, 1.25rem);
+    font-weight: 700;
+    line-height: 1;
+
+    text-align: center;
+
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.otp-input:focus {
+    outline: none;
+    box-shadow: var(--otp-focus-ring);
+}
+
+
+/* =========================================================
+   9. OTP TIMER
+========================================================= */
+
+.otp-timer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    gap: 8px;
+
+    margin: 0 0 18px;
+    padding: 0;
+
+    text-align: center;
+
+    font-size: clamp(0.76rem, 1vw, 0.84rem);
+    line-height: 1.5;
+}
+
+.otp-timer i {
+    flex: 0 0 auto;
+}
+
+
+/* =========================================================
+   10. VERIFY BUTTON
+========================================================= */
+
+#verifyBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    min-height: 48px;
+
+    gap: 9px;
+
+    margin: 0;
+    padding: 12px 15px;
+
+    text-align: center;
+    white-space: normal;
+    overflow-wrap: anywhere;
+
+    touch-action: manipulation;
+}
+
+#verifyBtn i {
+    flex: 0 0 auto;
+}
+
+#verifyBtn span {
+    flex: 0 1 auto;
+
+    min-width: 0;
+    max-width: 100%;
+
+    overflow-wrap: anywhere;
+}
+
+#verifyBtn:disabled {
+    cursor: not-allowed;
+}
+
+
+/* =========================================================
+   11. RESEND CODE
+========================================================= */
+
+.resend-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    gap: 5px 7px;
+
+    margin: 18px 0 0;
+    padding: 0;
+
+    text-align: center;
+
+    font-size: clamp(0.76rem, 1vw, 0.84rem);
+    line-height: 1.55;
+}
+
+.resend-text > span {
+    min-width: 0;
+    max-width: 100%;
+
+    overflow-wrap: anywhere;
+}
+
+.resend-text a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    max-width: 100%;
+    min-width: 0;
+
+    overflow-wrap: anywhere;
+    text-decoration: none;
+}
+
+
+/* =========================================================
+   12. SECURITY FOOTER
+========================================================= */
+
+.otp-security {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    gap: 10px;
+
+    margin: 24px 0 0;
+    padding: 13px;
+
+    border-radius: 12px;
+
+    font-size: clamp(0.74rem, 0.95vw, 0.82rem);
+    line-height: 1.55;
+}
+
+.otp-security > i {
+    flex: 0 0 auto;
+    margin-top: 3px;
+}
+
+.otp-security span {
+    flex: 1 1 auto;
+
+    width: 0;
+    min-width: 0;
+    max-width: 100%;
+
+    overflow-wrap: anywhere;
+}
+
+
+/* =========================================================
+   13. TABLETS AND COMPACT LAPTOPS
+========================================================= */
+
+@media (min-width: 761px) and (max-width: 1024px) {
+    :root {
+        --otp-card-padding: clamp(24px, 3.5vw, 36px);
+    }
+
+    .otp-card {
+        max-width: 480px;
+    }
+
+    .otp-logo {
+        width: min(100%, 155px);
+    }
+}
+
+
+/* =========================================================
+   14. MOBILE LAYOUT
+   Center when there is enough vertical space.
+========================================================= */
+
+@media (max-width: 760px) {
+    html,
+    body {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+    }
+
+    body {
+        display: flex !important;
+        flex-direction: column !important;
+
+        align-items: stretch !important;
+        justify-content: center !important;
+
+        min-height: 100vh !important;
+        min-height: 100dvh !important;
+
+        padding: 8px !important;
+    }
+
+    .otp-page {
+        display: flex !important;
+
+        flex: 1 0 auto !important;
+
+        align-items: center !important;
+        justify-content: center !important;
+
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+
+        min-height: calc(100vh - 16px) !important;
+        min-height: calc(100dvh - 16px) !important;
+
+        height: auto !important;
+
+        margin: 0 auto !important;
+        padding: 0 !important;
+    }
+
+    .otp-card {
+        display: block !important;
+
+        width: 100% !important;
+        max-width: 500px !important;
+        min-width: 0 !important;
+
+        height: auto !important;
+        min-height: 0 !important;
+
+        margin: auto !important;
+        padding: clamp(16px, 4vw, 22px) !important;
+
+        overflow: hidden !important;
+        border-radius: 18px;
+    }
+
+    .otp-header {
+        margin: 0 0 18px !important;
+    }
+
+    .otp-logo {
+        width: min(100%, 145px) !important;
+        max-width: 100% !important;
+        max-height: 44px !important;
+
+        margin-bottom: 13px !important;
+    }
+
+    .otp-icon {
+        width: 43px;
+        height: 43px;
+
+        margin-bottom: 12px;
+        border-radius: 13px;
+    }
+
+    .otp-icon i {
+        font-size: 1.15rem;
+    }
+
+    .otp-header h1 {
+        margin-bottom: 7px !important;
+
+        font-size: clamp(1.3rem, 5vw, 1.65rem) !important;
+        line-height: 1.25 !important;
+    }
+
+    .otp-header p {
+        font-size: clamp(0.78rem, 2.5vw, 0.88rem) !important;
+        line-height: 1.5 !important;
+    }
+
+    .otp-method-section {
+        margin-bottom: 14px !important;
+    }
+
+    .method-btn {
+        min-height: 42px;
+        padding: 9px 12px;
+        font-size: 0.84rem;
+    }
+
+    .otp-info {
+        gap: 10px;
+
+        margin-bottom: 18px !important;
+        padding: 11px !important;
+    }
+
+    .otp-info-icon {
+        flex-basis: 34px;
+        width: 34px;
+        height: 34px;
+    }
+
+    .otp-info-label {
+        font-size: 0.69rem !important;
+    }
+
+    #otpDestination {
+        font-size: 0.8rem !important;
+    }
+
+    .otp-code-section {
+        margin-bottom: 14px !important;
+    }
+
+    .otp-code-label {
+        margin-bottom: 10px !important;
+        font-size: 0.82rem !important;
+    }
+
+    .otp-input-group {
+        gap: clamp(5px, 1.7vw, 9px) !important;
+    }
+
+    .otp-input {
+        flex: 1 1 0;
+
+        width: 0;
+        min-width: 0;
+        max-width: 52px;
+
+        height: clamp(40px, 11vw, 49px);
+
+        padding: 0 1px;
+
+        font-size: clamp(1rem, 4.5vw, 1.2rem);
+        border-radius: 9px;
+    }
+
+    .otp-timer {
+        margin-bottom: 15px !important;
+        font-size: 0.77rem !important;
+    }
+
+    #verifyBtn {
+        min-height: 47px !important;
+
+        gap: 8px;
+
+        padding: 11px 12px !important;
+
+        font-size: 0.88rem;
+    }
+
+    .resend-text {
+        gap: 5px 7px;
+
+        margin-top: 15px !important;
+
+        font-size: 0.77rem !important;
+    }
+
+    .resend-text a {
+        min-height: 32px;
+    }
+
+    .otp-security {
+        gap: 9px;
+
+        margin-top: 19px !important;
+        padding: 10px !important;
+
+        font-size: 0.72rem !important;
+        line-height: 1.5 !important;
+    }
+}
+
+
+/* =========================================================
+   15. SMALL PHONES
+   361px–480px
+========================================================= */
+
+@media (min-width: 361px) and (max-width: 480px) {
+    body {
+        padding: 8px !important;
+    }
+
+    .otp-card {
+        padding: 18px !important;
+    }
+
+    .otp-header {
+        margin-bottom: 17px !important;
+    }
+
+    .otp-info {
+        padding: 10px !important;
+    }
+}
+
+
+/* =========================================================
+   16. EXTRA-SMALL PHONES
+   300px–360px
+========================================================= */
+
+@media (max-width: 360px) {
+    body {
+        padding: 4px !important;
+    }
+
+    .otp-page {
+        min-height: calc(100vh - 8px) !important;
+        min-height: calc(100dvh - 8px) !important;
+    }
+
+    .otp-card {
+        padding: 13px !important;
+        border-radius: 12px !important;
+    }
+
+    .otp-header {
+        margin-bottom: 15px !important;
+    }
+
+    .otp-logo {
+        width: min(100%, 130px) !important;
+        max-height: 39px !important;
+
+        margin-bottom: 11px !important;
+    }
+
+    .otp-icon {
+        width: 39px;
+        height: 39px;
+
+        margin-bottom: 10px;
+    }
+
+    .otp-header h1 {
+        font-size: clamp(1.18rem, 5.8vw, 1.4rem) !important;
+    }
+
+    .otp-header p {
+        font-size: 0.74rem !important;
+    }
+
+    .otp-method-section {
+        margin-bottom: 12px !important;
+    }
+
+    .method-btn {
+        min-height: 39px;
+        padding: 8px;
+        font-size: 0.79rem;
+    }
+
+    .otp-info {
+        gap: 8px;
+
+        margin-bottom: 15px !important;
+        padding: 9px !important;
+    }
+
+    .otp-info-icon {
+        flex-basis: 30px;
+        width: 30px;
+        height: 30px;
+    }
+
+    .otp-info-icon i {
+        font-size: 0.85rem;
+    }
+
+    .otp-info-label {
+        font-size: 0.64rem !important;
+    }
+
+    #otpDestination {
+        font-size: 0.74rem !important;
+    }
+
+    .otp-code-section {
+        margin-bottom: 12px !important;
+    }
+
+    .otp-code-label {
+        margin-bottom: 8px !important;
+        font-size: 0.76rem !important;
+    }
+
+    .otp-input-group {
+        gap: clamp(4px, 1.5vw, 6px) !important;
+    }
+
+    .otp-input {
+        flex: 1 1 0;
+
+        width: 0;
+        min-width: 0;
+        max-width: 45px;
+
+        height: clamp(36px, 11vw, 42px);
+
+        font-size: 1rem;
+        border-radius: 7px;
+    }
+
+    .otp-timer {
+        margin-bottom: 13px !important;
+        font-size: 0.71rem !important;
+    }
+
+    #verifyBtn {
+        min-height: 44px !important;
+        padding: 10px 8px !important;
+
+        font-size: 0.8rem !important;
+    }
+
+    .resend-text {
+        margin-top: 13px !important;
+        font-size: 0.7rem !important;
+    }
+
+    .otp-security {
+        gap: 8px;
+
+        margin-top: 15px !important;
+        padding: 9px !important;
+
+        font-size: 0.67rem !important;
+    }
+}
+
+
+/* =========================================================
+   17. MOBILE LANDSCAPE
+========================================================= */
+
+@media (max-width: 760px) and (orientation: landscape) {
+    body {
+        display: flex !important;
+        flex-direction: column !important;
+
+        align-items: stretch !important;
+        justify-content: flex-start !important;
+
+        padding: 6px !important;
+    }
+
+    .otp-page {
+        flex: 0 0 auto !important;
+
+        align-items: flex-start !important;
+        justify-content: center !important;
+
+        min-height: calc(100vh - 12px) !important;
+        min-height: calc(100dvh - 12px) !important;
+
+        margin: 0 auto !important;
+    }
+
+    .otp-card {
+        width: 100% !important;
+        max-width: 500px !important;
+
+        margin: 0 auto !important;
+        padding: 15px !important;
+    }
+
+    .otp-header {
+        margin-bottom: 12px !important;
+    }
+
+    .otp-logo {
+        max-height: 34px !important;
+        margin-bottom: 8px !important;
+    }
+
+    .otp-icon {
+        width: 35px;
+        height: 35px;
+        margin-bottom: 8px;
+    }
+
+    .otp-header h1 {
+        margin-bottom: 4px !important;
+    }
+
+    .otp-info {
+        margin-bottom: 12px !important;
+    }
+
+    .otp-code-section {
+        margin-bottom: 10px !important;
+    }
+
+    .otp-timer {
+        margin-bottom: 11px !important;
+    }
+
+    .resend-text {
+        margin-top: 10px !important;
+    }
+
+    .otp-security {
+        margin-top: 12px !important;
+    }
+}
+
+
+/* =========================================================
+   18. SHORT VIEWPORTS
+   Allow scrolling if content is taller than the screen.
+========================================================= */
+
+@media (max-height: 620px) {
+    body {
+        justify-content: flex-start;
+    }
+
+    .otp-page {
+        flex: 0 0 auto;
+        align-items: flex-start;
+    }
+
+    .otp-card {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .otp-header {
+        margin-bottom: 13px;
+    }
+
+    .otp-logo {
+        max-height: 36px;
+        margin-bottom: 9px;
+    }
+
+    .otp-icon {
+        margin-bottom: 9px;
+    }
+
+    .otp-method-section {
+        margin-bottom: 11px;
+    }
+
+    .otp-info {
+        margin-bottom: 13px;
+    }
+
+    .otp-code-section {
+        margin-bottom: 11px;
+    }
+
+    .otp-timer {
+        margin-bottom: 12px;
+    }
+
+    .resend-text {
+        margin-top: 12px;
+    }
+
+    .otp-security {
+        margin-top: 14px;
+    }
+}
+
+
+/* =========================================================
+   19. TOUCH AND KEYBOARD ACCESSIBILITY
+========================================================= */
+
+@media (hover: none) and (pointer: coarse) {
+    .method-btn {
+        min-height: 42px;
+    }
+
+    .otp-input {
+        min-height: 40px;
+    }
+
+    #verifyBtn {
+        min-height: 47px;
+    }
+
+    .resend-text a {
+        min-height: 36px;
+    }
+}
+
+.otp-logo:focus-visible,
+.method-btn:focus-visible,
+.otp-input:focus-visible,
+#verifyBtn:focus-visible,
+.resend-text a:focus-visible {
+    outline: 3px solid rgba(57, 133, 43, 0.35);
+    outline-offset: 2px;
+}
+
+
+/* =========================================================
+   20. REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+
+/* =========================================================
+   END OF LOSIS 2FA RESPONSIVE CSS
+========================================================= */

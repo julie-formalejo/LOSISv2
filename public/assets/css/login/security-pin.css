@@ -1,0 +1,988 @@
+/* =========================================================
+   LOSIS — SECURITY PIN PAGE
+   File: assets/css/login/losis-security-pin.css
+
+   Consistent with LOSIS authentication pages:
+   - Light gray background
+   - Compact white card
+   - Green security accents
+   - Six-digit PIN inputs
+   - Existing PIN and PIN setup states
+   - Responsive desktop and mobile layout
+========================================================= */
+
+
+/* =========================================================
+   1. DESIGN VARIABLES
+========================================================= */
+
+:root {
+    --security-primary: #39852b;
+    --security-primary-dark: #2f7024;
+    --security-primary-light: #69c94a;
+
+    --security-primary-soft: #edf7e9;
+    --security-primary-border: #d6eacb;
+
+    --losis-page: #f4f7fb;
+    --security-white: #ffffff;
+
+    --security-text: #243247;
+    --security-muted: #718096;
+
+    --security-border: #e2e8f0;
+    --security-input-border: #d7dee8;
+
+    --security-danger: #dc3545;
+    --security-danger-soft: #fff1f2;
+
+    --security-radius: 16px;
+    --security-input-radius: 9px;
+
+    --security-shadow:
+        0 8px 28px rgba(31, 55, 35, 0.07),
+        0 1px 4px rgba(31, 55, 35, 0.03);
+}
+
+
+/* =========================================================
+   2. GLOBAL RESET
+========================================================= */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    margin: 0;
+
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+
+    color: var(--security-text);
+    background:
+        radial-gradient(
+            ellipse at 12% 8%,
+            rgba(126, 217, 87, 0.13),
+            transparent 34%
+        ),
+        radial-gradient(
+            ellipse at 90% 92%,
+            rgba(57, 133, 43, 0.08),
+            transparent 30%
+        ),
+        var(--losis-page);
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+button {
+    font-family: inherit;
+}
+
+a {
+    color: var(--security-primary);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--security-primary-dark);
+}
+
+
+/* =========================================================
+   3. PAGE LAYOUT
+========================================================= */
+
+.security-page {
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 28px 20px;
+
+    background: var(--security-background);
+}
+
+
+/* =========================================================
+   4. SECURITY PIN CARD
+========================================================= */
+
+.security-pin-card {
+    position: relative;
+
+    width: 100%;
+    max-width: 460px;
+
+    margin: auto;
+    padding: 30px 32px 25px;
+
+    background: var(--security-white);
+
+    border: 1px solid var(--security-border);
+    border-radius: var(--security-radius);
+
+    box-shadow: var(--security-shadow);
+}
+
+
+/* =========================================================
+   5. HEADER
+========================================================= */
+
+.security-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-bottom: 23px;
+
+    text-align: center;
+}
+
+.security-logo {
+    display: block;
+
+    width: auto;
+    max-width: 155px;
+    max-height: 48px;
+
+    margin: 0 auto 20px;
+
+    object-fit: contain;
+}
+
+
+/* =========================================================
+   6. SECURITY ICON
+========================================================= */
+
+.security-icon {
+    width: 56px;
+    height: 56px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 14px;
+
+    color: var(--security-primary);
+    background: var(--security-primary-soft);
+
+    border: 1px solid var(--security-primary-border);
+    border-radius: 50%;
+}
+
+.security-icon i {
+    font-size: 22px;
+    line-height: 1;
+}
+
+
+/* =========================================================
+   7. SECURITY BADGE
+========================================================= */
+
+.security-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    margin-bottom: 11px;
+    padding: 6px 11px;
+
+    color: var(--security-primary);
+    background: var(--security-primary-soft);
+
+    border: 1px solid var(--security-primary-border);
+    border-radius: 50px;
+
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.security-badge i {
+    font-size: 11px;
+}
+
+.security-badge.setup {
+    color: #356a2b;
+    background: #f1f8ed;
+
+    border-color: #dcebd3;
+}
+
+
+/* =========================================================
+   8. TITLE AND DESCRIPTION
+========================================================= */
+
+.security-header h1,
+.security-header h4 {
+    margin: 0 0 8px;
+
+    color: var(--security-text);
+
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.35;
+
+    letter-spacing: -0.35px;
+}
+
+.security-header p {
+    max-width: 340px;
+
+    margin: 0;
+
+    color: var(--security-muted);
+
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   9. USER INFORMATION
+========================================================= */
+
+.security-user-info {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+
+    margin-bottom: 22px;
+    padding: 12px 13px;
+
+    background: #f8faf8;
+
+    border: 1px solid #e5eee1;
+    border-radius: 10px;
+}
+
+
+/* User icon */
+
+.security-user-icon {
+    width: 40px;
+    height: 40px;
+
+    flex: 0 0 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--security-primary);
+    background: var(--security-primary-soft);
+
+    border: 1px solid var(--security-primary-border);
+    border-radius: 9px;
+}
+
+.security-user-icon i {
+    font-size: 15px;
+}
+
+
+/* User information text */
+
+.security-user-details {
+    display: flex;
+    flex-direction: column;
+
+    flex: 1;
+    min-width: 0;
+
+    gap: 3px;
+}
+
+.security-user-details > span {
+    color: var(--security-muted);
+
+    font-size: 11px;
+    line-height: 1.4;
+}
+
+.security-user-details strong {
+    display: block;
+
+    color: var(--security-text);
+
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.5;
+
+    overflow-wrap: anywhere;
+}
+
+
+/* Account status */
+
+.security-account-status {
+    flex: 0 0 auto;
+
+    color: var(--security-primary);
+
+    font-size: 16px;
+}
+
+
+/* =========================================================
+   10. PIN SECTION
+========================================================= */
+
+.pin-section {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.pin-section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    flex-wrap: wrap;
+    gap: 7px;
+
+    margin-bottom: 11px;
+}
+
+.pin-label {
+    color: #344054;
+
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+.pin-required {
+    color: var(--security-muted);
+
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   11. PIN INPUT WRAPPER
+========================================================= */
+
+.security-pin-input-wrapper {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+}
+
+
+/* =========================================================
+   12. SIX-DIGIT PIN GROUP
+========================================================= */
+
+.security-pin-group {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 9px;
+
+    padding-right: 35px;
+}
+
+
+/* Individual PIN inputs */
+
+.pin-input,
+.setup-pin-input,
+.confirm-pin-input {
+    display: block;
+
+    width: 42px;
+    height: 48px;
+
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: 52px;
+
+    padding: 0 3px;
+
+    color: var(--security-text);
+    background: var(--security-white);
+
+    border: 1px solid var(--security-input-border);
+    border-radius: var(--security-input-radius);
+
+    box-shadow: none;
+
+    font-family: inherit;
+    font-size: 19px;
+    font-weight: 600;
+    line-height: normal;
+
+    text-align: center;
+
+    caret-color: var(--security-primary);
+
+    transition:
+        border-color 0.2s ease,
+        background-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+/* Hover */
+
+.pin-input:hover,
+.setup-pin-input:hover,
+.confirm-pin-input:hover {
+    border-color: #b9c8b2;
+}
+
+
+/* Focus */
+
+.pin-input:focus,
+.setup-pin-input:focus,
+.confirm-pin-input:focus {
+    color: var(--security-text);
+    background: #fbfef9;
+
+    border-color: var(--security-primary);
+
+    box-shadow: 0 0 0 3px rgba(57, 133, 43, 0.10);
+
+    outline: none;
+}
+
+
+/* Invalid input state */
+
+.pin-input.is-invalid,
+.setup-pin-input.is-invalid,
+.confirm-pin-input.is-invalid,
+.pin-input.invalid,
+.setup-pin-input.invalid,
+.confirm-pin-input.invalid {
+    color: var(--security-danger);
+    background: var(--security-danger-soft);
+
+    border-color: var(--security-danger);
+
+    box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.06);
+}
+
+
+/* Invalid group state */
+
+.security-pin-group.is-invalid .pin-input,
+.security-pin-group.is-invalid .setup-pin-input,
+.security-pin-group.is-invalid .confirm-pin-input {
+    border-color: var(--security-danger);
+}
+
+
+/* =========================================================
+   13. SHOW / HIDE PIN BUTTON
+========================================================= */
+
+.pin-visibility-btn {
+    position: absolute;
+    top: 50%;
+    right: 0;
+
+    width: 32px;
+    height: 34px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    color: #7b8797;
+    background: transparent;
+
+    border: 0;
+    border-radius: 7px;
+
+    transform: translateY(-50%);
+
+    cursor: pointer;
+
+    transition:
+        color 0.2s ease,
+        background-color 0.2s ease;
+}
+
+.pin-visibility-btn:hover {
+    color: var(--security-primary);
+    background: var(--security-primary-soft);
+}
+
+.pin-visibility-btn:focus-visible {
+    outline: 2px solid var(--security-primary);
+    outline-offset: 1px;
+}
+
+.pin-visibility-btn i {
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   14. CONFIRM PIN SECTION
+========================================================= */
+
+.confirm-pin-section {
+    margin-top: 2px;
+    margin-bottom: 20px;
+}
+
+
+/* =========================================================
+   15. PRIMARY BUTTON
+========================================================= */
+
+.security-btn {
+    width: 100%;
+    min-height: 47px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 9px;
+
+    padding: 11px 16px;
+
+    color: var(--security-white);
+    background: linear-gradient(
+        135deg,
+        var(--security-primary),
+        var(--security-primary-light)
+    );
+
+    border: 1px solid transparent;
+    border-radius: var(--security-input-radius);
+
+    box-shadow: 0 3px 8px rgba(57, 133, 43, 0.13);
+
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.4;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+}
+
+.security-btn > i {
+    font-size: 14px;
+}
+
+.security-btn:hover {
+    color: var(--security-white);
+
+    background: linear-gradient(
+        135deg,
+        var(--security-primary-dark),
+        var(--security-primary)
+    );
+
+    border-color: transparent;
+
+    box-shadow: 0 5px 12px rgba(57, 133, 43, 0.18);
+
+    transform: translateY(-1px);
+}
+
+.security-btn:active {
+    transform: translateY(0);
+
+    box-shadow: 0 2px 5px rgba(57, 133, 43, 0.12);
+}
+
+.security-btn:focus-visible {
+    outline: 3px solid rgba(57, 133, 43, 0.20);
+    outline-offset: 3px;
+}
+
+.security-btn:disabled {
+    opacity: 0.65;
+
+    cursor: not-allowed;
+
+    transform: none;
+    box-shadow: none;
+}
+
+
+/* =========================================================
+   16. SECURITY HELP MESSAGE
+========================================================= */
+
+.security-help-text {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 9px;
+
+    margin-top: 17px;
+    padding: 11px 12px;
+
+    color: #356a2b;
+    background: var(--security-primary-soft);
+
+    border: 1px solid var(--security-primary-border);
+    border-radius: 9px;
+
+    font-size: 11px;
+    line-height: 1.65;
+}
+
+.security-help-text > i {
+    flex: 0 0 auto;
+
+    margin-top: 2px;
+
+    color: var(--security-primary);
+
+    font-size: 13px;
+}
+
+.security-help-text span {
+    flex: 1;
+    min-width: 0;
+}
+
+
+/* =========================================================
+   17. SECURITY FOOTER
+========================================================= */
+
+.security-footer-note {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+
+    gap: 7px;
+
+    margin-top: 21px;
+    padding-top: 15px;
+
+    color: #849184;
+
+    border-top: 1px solid #edf1eb;
+
+    font-size: 10px;
+    line-height: 1.65;
+
+    text-align: center;
+}
+
+.security-footer-note > i {
+    flex: 0 0 auto;
+
+    margin-top: 2px;
+
+    color: var(--security-primary);
+
+    font-size: 12px;
+}
+
+.security-footer-note span {
+    max-width: 320px;
+}
+
+
+/* =========================================================
+   18. TABLET AND MOBILE
+========================================================= */
+
+@media (max-width: 576px) {
+
+    .security-page {
+        padding: 22px 15px;
+    }
+
+    .security-pin-card {
+        max-width: 460px;
+
+        padding: 27px 23px 22px;
+
+        border-radius: 14px;
+    }
+
+    .security-header {
+        margin-bottom: 20px;
+    }
+
+    .security-logo {
+        max-width: 145px;
+        max-height: 45px;
+
+        margin-bottom: 17px;
+    }
+
+    .security-icon {
+        width: 52px;
+        height: 52px;
+
+        margin-bottom: 13px;
+    }
+
+    .security-icon i {
+        font-size: 21px;
+    }
+
+    .security-header h1,
+    .security-header h4 {
+        font-size: 21px;
+    }
+
+    .security-header p {
+        font-size: 12px;
+    }
+
+    .security-user-info {
+        margin-bottom: 19px;
+        padding: 11px;
+    }
+
+    .security-pin-group {
+        gap: 7px;
+        padding-right: 32px;
+    }
+
+    .pin-input,
+    .setup-pin-input,
+    .confirm-pin-input {
+        height: 45px;
+        font-size: 18px;
+    }
+
+    .security-btn {
+        min-height: 45px;
+    }
+}
+
+
+/* =========================================================
+   19. SMALL MOBILE
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .security-page {
+        padding: 15px 10px;
+    }
+
+    .security-pin-card {
+        padding: 24px 16px 19px;
+    }
+
+    .security-logo {
+        max-width: 130px;
+        max-height: 42px;
+    }
+
+    .security-header h1,
+    .security-header h4 {
+        font-size: 20px;
+    }
+
+    .security-badge {
+        font-size: 10px;
+    }
+
+    .security-user-info {
+        gap: 9px;
+    }
+
+    .security-user-icon {
+        width: 36px;
+        height: 36px;
+
+        flex-basis: 36px;
+    }
+
+    .security-user-details strong {
+        font-size: 11px;
+    }
+
+    .pin-section-header {
+        gap: 5px;
+    }
+
+    .pin-label {
+        font-size: 12px;
+    }
+
+    .pin-required {
+        font-size: 10px;
+    }
+
+    .security-pin-group {
+        gap: 5px;
+        padding-right: 28px;
+    }
+
+    .pin-input,
+    .setup-pin-input,
+    .confirm-pin-input {
+        height: 41px;
+        padding: 0 2px;
+
+        border-radius: 7px;
+
+        font-size: 17px;
+    }
+
+    .pin-visibility-btn {
+        width: 27px;
+        height: 32px;
+    }
+
+    .security-btn {
+        min-height: 44px;
+        font-size: 12px;
+    }
+
+    .security-help-text {
+        padding: 10px;
+        font-size: 10px;
+    }
+
+    .security-footer-note {
+        font-size: 10px;
+    }
+}
+
+
+/* =========================================================
+   20. SHORT VIEWPORTS
+========================================================= */
+
+@media (max-height: 700px) {
+
+    .security-page {
+        align-items: flex-start;
+
+        padding-top: 16px;
+        padding-bottom: 16px;
+    }
+
+    .security-pin-card {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .security-header {
+        margin-bottom: 17px;
+    }
+
+    .security-logo {
+        margin-bottom: 14px;
+    }
+
+    .security-icon {
+        width: 48px;
+        height: 48px;
+
+        margin-bottom: 10px;
+    }
+
+    .security-icon i {
+        font-size: 19px;
+    }
+
+    .security-user-info {
+        margin-bottom: 17px;
+    }
+
+    .pin-section {
+        margin-bottom: 16px;
+    }
+
+    .confirm-pin-section {
+        margin-bottom: 17px;
+    }
+
+    .pin-input,
+    .setup-pin-input,
+    .confirm-pin-input {
+        height: 42px;
+    }
+
+    .security-help-text {
+        margin-top: 14px;
+    }
+
+    .security-footer-note {
+        margin-top: 17px;
+        padding-top: 13px;
+    }
+}
+
+
+/* =========================================================
+   21. ACCESSIBILITY
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+
+        transition-duration: 0.01ms !important;
+    }
+}
