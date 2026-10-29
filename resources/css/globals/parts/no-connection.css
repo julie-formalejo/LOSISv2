@@ -1,0 +1,253 @@
+/* =========================================================
+   LOSIS CONNECTION MONITOR (Themed Executive Standard)
+   Ultra-Polished Enterprise / SaaS Design
+========================================================= */
+
+.connection-lost-page {
+    position: fixed;
+    inset: 0;
+    z-index: 100000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(11, 15, 25, 0.82);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity .3s cubic-bezier(0.16, 1, 0.3, 1), visibility .3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.connection-lost-page.show {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+
+/* =========================================================
+   EXECUTIVE GLASS CARD CONTAINER
+========================================================= */
+
+.connection-lost-card {
+    position: relative;
+    width: 100%;
+    max-width: 440px;
+    padding: 38px 36px 34px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: var(--system-surface, #FFFFFF);
+    border: 1px solid var(--system-border, #E2E8F0);
+    border-radius: 20px;
+    box-shadow:
+        0 32px 64px -12px rgba(15, 23, 42, 0.28),
+        0 0 0 1px rgba(255, 255, 255, 0.9) inset,
+        0 4px 12px rgba(15, 23, 42, 0.05);
+    overflow: hidden;
+    animation: connectionCardIn .4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Luxurious Top Gradient Border Accent (Theme-driven) */
+.connection-lost-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 10%;
+    right: 10%;
+    height: 3px;
+    border-radius: 0 0 4px 4px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(var(--connection-primary-rgb), 0.4),
+        var(--connection-primary),
+        rgba(var(--connection-primary-rgb), 0.4),
+        transparent
+    );
+}
+
+
+/* =========================================================
+   REFINED ICON & GLOW RINGS (Theme-driven)
+========================================================= */
+
+.connection-lost-icon {
+    position: relative;
+    width: 72px;
+    height: 72px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 18px;
+    background: linear-gradient(135deg, rgba(var(--connection-primary-rgb), 0.08), rgba(var(--connection-primary-rgb), 0.03));
+    border: 1px solid rgba(var(--connection-primary-rgb), 0.18);
+    color: var(--connection-primary);
+    font-size: 1.35rem;
+    box-shadow: 0 10px 25px rgba(var(--connection-primary-rgb), 0.12);
+}
+
+.connection-lost-icon::before {
+    content: "";
+    position: absolute;
+    inset: -5px;
+    border-radius: 22px;
+    border: 1px dashed rgba(var(--connection-primary-rgb), 0.3);
+    animation: connectionSpinRing 12s linear infinite;
+}
+
+.connection-lost-icon span {
+    position: absolute;
+    top: -3px;
+    right: -3px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #EF4444; /* Status alert indicator */
+    border: 2px solid var(--system-surface, #FFFFFF);
+    box-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+    animation: connectionDotPulse 1.8s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   TYPOGRAPHY & STATUS BADGE (Theme-driven)
+========================================================= */
+
+.connection-lost-label {
+    margin-bottom: 8px;
+    color: var(--connection-primary);
+    font-size: 0.65rem;
+    font-weight: 750;
+    letter-spacing: 0.16em;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+.connection-lost-content h1 {
+    margin: 0;
+    color: var(--system-text, #0F172A);
+    font-size: 1.3rem;
+    font-weight: 750;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+}
+
+.connection-lost-content p {
+    max-width: 340px;
+    margin: 10px auto 0;
+    color: var(--system-text-muted, #64748B);
+    font-size: 0.83rem;
+    font-weight: 450;
+    line-height: 1.6;
+}
+
+.connection-lost-status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+    padding: 6px 14px;
+    background: var(--system-surface-soft, #F8FAFC);
+    border: 1px solid var(--system-border, #E2E8F0);
+    border-radius: 999px;
+    color: var(--system-text-muted, #64748B);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.02) inset;
+}
+
+.connection-status-dot {
+    width: 7px;
+    height: 7px;
+    flex: 0 0 7px;
+    border-radius: 50%;
+    background: #EF4444;
+    box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.12);
+    animation: connectionStatusPulse 1.5s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   EXECUTIVE ACTION BUTTON (Theme-driven)
+========================================================= */
+
+.connection-retry-btn {
+    margin-top: 24px;
+    width: 100%;
+    height: 44px;
+    padding: 0 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    border: 1px solid var(--connection-primary-border);
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--connection-primary), var(--connection-primary-hover));
+    color: #FFFFFF;
+    font-family: inherit;
+    font-size: 0.83rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(var(--connection-primary-rgb), 0.28), 0 1px 2px rgba(255, 255, 255, 0.15) inset;
+    transition: all .2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.connection-retry-btn:hover {
+    background: linear-gradient(135deg, var(--connection-primary-hover), var(--connection-primary-hover));
+    border-color: var(--connection-primary-hover);
+    box-shadow: 0 6px 20px rgba(var(--connection-primary-rgb), 0.38), 0 1px 2px rgba(255, 255, 255, 0.2) inset;
+    transform: translateY(-1px);
+}
+
+.connection-retry-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(var(--connection-primary-rgb), 0.25);
+}
+
+.connection-retry-btn i {
+    font-size: 0.78rem;
+    transition: transform .3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.connection-retry-btn:hover i {
+    transform: rotate(180deg);
+}
+
+
+/* =========================================================
+   KEYFRAME ANIMATIONS
+========================================================= */
+
+@keyframes connectionCardIn {
+    0% {
+        opacity: 0;
+        transform: translateY(16px) scale(0.97);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes connectionSpinRing {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes connectionDotPulse {
+    0%, 100% { transform: scale(1); opacity: 0.8; box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4); }
+    50% { transform: scale(1.15); opacity: 1; box-shadow: 0 0 0 5px rgba(239, 68, 68, 0); }
+}
+
+@keyframes connectionStatusPulse {
+    0%, 100% { opacity: 0.5; transform: scale(0.9); }
+    50% { opacity: 1; transform: scale(1.1); }
+}

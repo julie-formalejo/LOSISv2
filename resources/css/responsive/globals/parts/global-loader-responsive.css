@@ -1,0 +1,68 @@
+/* =========================================================
+   GLOBAL LOADER — RESPONSIVE EXTENSION (ALL DEVICES)
+========================================================= */
+
+@media (max-width: 576px) {
+    .global-loader {
+        padding: 16px;
+    }
+
+    .global-loader-card {
+        max-width: 320px;
+        padding: 18px 18px 20px;
+        gap: 14px;
+        border-radius: 14px;
+    }
+
+    .global-loader-icon {
+        flex: 0 0 46px;
+        width: 46px;
+        height: 46px;
+    }
+
+    .global-loader-icon::before {
+        inset: 4px;
+    }
+
+    .global-loader-icon::after {
+        inset: 8px;
+    }
+
+    .global-loader-title {
+        font-size: .84rem;
+    }
+
+    .global-loader-text {
+        font-size: .7rem;
+        max-width: 220px;
+    }
+
+    .global-loader-status {
+        font-size: .56rem;
+    }
+
+    .global-loader-track {
+        left: 18px;
+        right: 18px;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION SUPPORT
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    .global-loader,
+    .global-loader-card,
+    .global-loader-card::after,
+    .global-loader-icon::before,
+    .global-loader-icon::after,
+    .global-loader-icon i,
+    .global-loader-status::before,
+    .global-loader-status span,
+    .global-loader-progress {
+        animation: none !important;
+        transition: none !important;
+    }
+}

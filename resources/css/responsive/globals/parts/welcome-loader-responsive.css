@@ -1,0 +1,29 @@
+/* =========================================================
+   WELCOME LOADER — RESPONSIVE EXTENSION
+========================================================= */
+
+@media (max-width: 576px) {
+    .welcome-loader {
+        padding: 16px;
+    }
+
+    .loader-content-card {
+        max-width: 320px;
+        padding: 32px 24px;
+        border-radius: 20px;
+    }
+
+    .loader-logo {
+        width: 120px;
+        margin-bottom: 16px;
+    }
+
+    .loader-subtitle {
+        font-size: 0.78rem;
+        margin-bottom: 22px;
+    }
+
+    .loader-track {
+        width: 150px;
+    }
+}

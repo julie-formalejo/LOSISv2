@@ -1,0 +1,1482 @@
+    /* =========================================================
+       03. GLOBAL RESET — RESPONSIVE EXTENSION (ALL DEVICES)
+       Covers: Mobile, Tablets, Laptops, 4K/Ultra-Wide Desktops
+    ========================================================= */
+
+    /* =========================================================
+       1. SMALL MOBILE DEVICES (Max-width: 480px)
+       Tulad ng mga compact smartphones
+    ========================================================= */
+    @media (max-width: 480px) {
+        html,
+        body {
+            /* Bahagyang binabaan ang base size para hindi sumabog ang text sa maliliit na screen */
+            font-size: calc(var(--font-base, 14px) - 1px);
+        }
+
+        /* Mas pinaliit ang scrollbar width para hindi kumain ng espasyo sa mobile */
+        ::-webkit-scrollbar {
+            width: 5px;
+            height: 5px;
+        }
+    }
+
+
+    /* =========================================================
+       2. STANDARD MOBILE & TABLETS (Max-width: 768px)
+       Tulad ng iPhones, Android phones, at Small iPads
+    ========================================================= */
+    @media (max-width: 768px) {
+        /* Touch device optimization: Pigilan ang accidental text selection o zoom glitches sa touch */
+        html {
+            -webkit-text-size-adjust: 100%;
+        }
+
+        /* Siguraduhing walang elementong lalabas sa screen width */
+        body {
+            max-width: 100vw;
+        }
+    }
+
+
+    /* =========================================================
+       3. LARGE SCREENS & 4K / ULTRA-WIDE DESKTOPS (Min-width: 1920px)
+       Para sa mga malalaking executive monitors o dual monitors
+    ========================================================= */
+    @media (min-width: 1920px) {
+        html {
+            /* Nagbibigay ng mas malinaw na scaling sa napakalalaking monitors */
+            font-size: 105%;
+        }
+    }
+
+
+    /* =========================================================
+       4. HIGH-DENSITY (RETINA) & PRINT MEDIA SAFETY
+    ========================================================= */
+    @media print {
+        /* Tanggalin ang scrollbars at backgrounds kapag pinrinta ang report o DTR */
+        html,
+        body {
+            background: transparent !important;
+            color: #000000 !important;
+            overflow: visible !important;
+        }
+    }
+
+    /* =========================================================
+       04. TYPOGRAPHY — RESPONSIVE EXTENSION (ALL DEVICES)
+       Covers: Small Mobile, Tablets, Laptops, to 4K/Ultra-Wide
+    ========================================================= */
+
+    /* =========================================================
+       1. FLUID TYPOGRAPHY SCALING FOR ALL SCREENS
+       Awtomatikong sumasabay ang text size sa lapad ng viewport
+    ========================================================= */
+
+    :root {
+        /* Fluid base typography adjustments para sa smooth scaling */
+        --fluid-h1: clamp(1.75rem, 1.5rem + 1.25vw, 2.35rem);     /* ~28px to ~38px */
+        --fluid-h2: clamp(1.5rem, 1.3rem + 1vw, 2rem);           /* ~24px to ~32px */
+        --fluid-h3: clamp(1.3rem, 1.15rem + 0.75vw, 1.75rem);    /* ~20.8px to ~28px */
+        --fluid-h4: clamp(1.15rem, 1.05rem + 0.5vw, 1.45rem);    /* ~18.4px to ~23px */
+    }
+
+
+    /* =========================================================
+       2. MOBILE & SMALL DEVICES (Max-width: 768px)
+    ========================================================= */
+    @media (max-width: 768px) {
+        h1 {
+            font-size: var(--fluid-h1) !important;
+            line-height: 1.2 !important;
+        }
+
+        h2 {
+            font-size: var(--fluid-h2) !important;
+            line-height: 1.25 !important;
+        }
+
+        h3 {
+            font-size: var(--fluid-h3) !important;
+        }
+
+        h4 {
+            font-size: var(--fluid-h4) !important;
+        }
+
+        /* Bahagyang babaan ang line height ng paragraphs para mas compact sa mobile */
+        p {
+            line-height: 1.55;
+        }
+    }
+
+
+    /* =========================================================
+       3. EXTRA SMALL PHONES (Max-width: 480px)
+    ========================================================= */
+    @media (max-width: 480px) {
+        body {
+            font-size: calc(var(--font-base, 14px) - 0.5px);
+        }
+
+        h1 {
+            font-size: 1.65rem !important; /* ~26.4px para hindi sumabog sa maliit na screen */
+        }
+
+        h2 {
+            font-size: 1.45rem !important;
+        }
+
+        h3 {
+            font-size: 1.25rem !important;
+        }
+
+        h4 {
+            font-size: 1.1rem !important;
+        }
+    }
+
+
+    /* =========================================================
+       4. LARGE & ULTRA-WIDE DESKTOPS (Min-width: 1920px)
+       Para sa malalaking executive monitors at dual setups
+    ========================================================= */
+    @media (min-width: 1920px) {
+        h1 {
+            font-size: 2.25rem !important; /* Mas lumilitaw ang mga pangunahing pamagat sa malaking screen */
+        }
+
+        h2 {
+            font-size: 1.9rem !important;
+        }
+
+        /* Ginagawang mas maluwag ang basahin para sa malalayong mata sa malalaking screen */
+        body {
+            line-height: 1.6;
+        }
+    }
+
+    /* =========================================================
+     05. LAYOUT SYSTEM — RESPONSIVE EXTENSION (ALL DEVICES)
+    Covers: Small Mobile, Tablets, Laptops, to 4K/Ultra-Wide
+    ========================================================= */
+
+    /* 1. EXTRA-LARGE & ULTRA-WIDE DESKTOPS (Min-width: 1920px) */
+    @media (min-width: 1920px) {
+        .page-container {
+            max-width: 1850px;
+            padding: 32px 40px 100px;
+        }
+    }
+
+    /* 2. TABLET / MEDIUM SCREENS (Max-width: 1024px) */
+    @media (max-width: 1024px) {
+        .page-container {
+            padding: 20px 24px 70px;
+        }
+
+        .content-row {
+            gap: 20px;
+        }
+    }
+
+    /* 3. MOBILE & SMALL DEVICES (Max-width: 768px) */
+    @media (max-width: 768px) {
+        .page-container {
+            padding: 16px 16px 60px;
+        }
+
+        .page-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+
+        .page-header-right {
+            width: 100%;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .section-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 14px;
+        }
+
+        .content-row {
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        .divider {
+            margin: 16px 0;
+        }
+    }
+
+    /* 4. SMALL MOBILE PHONES (Max-width: 480px) */
+    @media (max-width: 480px) {
+        .page-container {
+            padding: 12px 14px 40px;
+        }
+
+        .page-body,
+        .page-content {
+            gap: 16px;
+        }
+
+        .page-title {
+            font-size: 1.25rem;
+        }
+
+        .section-title {
+            font-size: 1rem;
+        }
+    }
+
+    /* 5. LANDSCAPE MOBILE MODE SAFETY */
+    @media (max-height: 500px) and (orientation: landscape) {
+        .page-container {
+            padding: 10px 20px 40px;
+        }
+
+        .page-header {
+            margin-bottom: 14px;
+        }
+    }
+
+    /* =========================================================
+       06. GRID & FLEX SYSTEM — RESPONSIVE EXTENSION (ALL DEVICES)
+       Covers: Small Mobile, Tablets, Laptops, to 4K/Ultra-Wide
+    ========================================================= */
+
+    /* =========================================================
+       1. ULTRA-WIDE & 4K DESKTOPS (Min-width: 1920px)
+       Pagbibigay ng tamang espasyo at breathable gaps sa malalaking monitor
+    ========================================================= */
+    @media (min-width: 1920px) {
+        .chart-grid {
+            gap: 32px;
+        }
+
+        .four-column,
+        .three-column,
+        .two-column {
+            gap: 28px;
+        }
+
+        .kpi-grid,
+        .filter-grid,
+        .info-grid {
+            gap: 24px;
+        }
+    }
+
+
+    /* =========================================================
+       2. LAPTOPS & STANDARD DESKTOPS (Max-width: 1200px)
+    ========================================================= */
+    @media (max-width: 1200px) {
+        .chart-grid {
+            grid-template-columns: 1fr !important;
+        }
+    }
+
+
+    /* =========================================================
+       3. TABLETS & SMALL LAPTOPS (Max-width: 1024px)
+    ========================================================= */
+    @media (max-width: 1024px) {
+        .four-column {
+            grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        }
+
+        .three-column {
+            grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        }
+
+        .details-grid {
+            grid-template-columns: 1fr !important;
+        }
+    }
+
+
+    /* =========================================================
+       4. TABLET PORTRAIT & LARGE PHONES (Max-width: 768px)
+       Lahat ng multi-columns ay nagiging single column pataas-pababa
+    ========================================================= */
+    @media (max-width: 768px) {
+        .two-column,
+        .three-column,
+        .four-column {
+            grid-template-columns: 1fr !important;
+            gap: 16px;
+        }
+
+        .kpi-grid,
+        .filter-grid,
+        .info-grid,
+        .summary-grid,
+        .statistics-grid,
+        .auto-grid {
+            grid-template-columns: 1fr !important;
+            gap: 14px;
+        }
+
+        /* Flex adjustments para sa maliliit na screen */
+        .flex-between {
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+    }
+
+
+    /* =========================================================
+       5. COMPACT MOBILE PHONES (Max-width: 480px)
+       Sinisigurong walang grid item na lolobo o magdudulot ng horizontal scroll
+    ========================================================= */
+    @media (max-width: 480px) {
+        .kpi-grid,
+        .filter-grid,
+        .info-grid,
+        .summary-grid,
+        .statistics-grid,
+        .auto-grid,
+        .two-column,
+        .three-column,
+        .four-column {
+            grid-template-columns: 100% !important;
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        /* Paliitin ang gaps para sa mas compact na UI sa mobile */
+        .gap-40 { gap: 20px !important; }
+        .gap-30 { gap: 16px !important; }
+        .gap-25 { gap: 14px !important; }
+        .gap-20 { gap: 12px !important; }
+    }
+
+    /* =========================================================
+       07. CARD SYSTEM — RESPONSIVE EXTENSION (ALL DEVICES)
+       Covers: Small Mobile, Tablets, Laptops, to 4K/Ultra-Wide
+    ========================================================= */
+
+    /* =========================================================
+       1. ULTRA-WIDE & 4K DESKTOPS (Min-width: 1920px)
+       Pagbibigay ng mas maluwag na espasyo at padding sa malalaking screen
+    ========================================================= */
+    @media (min-width: 1920px) {
+        .card-container {
+            margin-top: 24px;
+            margin-bottom: 24px;
+        }
+
+        .card-header,
+        .card-body,
+        .card-footer {
+            padding-left: 32px;
+            padding-right: 32px;
+        }
+
+        .chart-card {
+            padding: 32px;
+            min-height: 520px;
+        }
+    }
+
+
+    /* =========================================================
+       2. LAPTOPS & TABLETS (Max-width: 1024px)
+    ========================================================= */
+    @media (max-width: 1024px) {
+        .chart-card {
+            min-height: 440px;
+            padding: 20px;
+        }
+
+        .chart-card canvas {
+            min-height: 280px;
+        }
+    }
+
+
+    /* =========================================================
+       3. TABLET PORTRAIT & LARGE PHONES (Max-width: 768px)
+    ========================================================= */
+    @media (max-width: 768px) {
+        /* Standard Card Headers nagiging stacked */
+        .card-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 18px 20px 14px;
+        }
+
+        .card-header-right {
+            width: 100%;
+            justify-content: flex-start;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-footer {
+            padding: 14px 20px;
+        }
+
+        /* Chart Card Headers nagiging stacked din */
+        .chart-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 12px;
+            padding-bottom: 14px;
+            margin-bottom: 16px;
+        }
+
+        .chart-period {
+            align-self: flex-start;
+        }
+
+        .chart-card {
+            min-height: auto;
+            padding: 16px;
+        }
+
+        .chart-card canvas {
+            min-height: 250px;
+            max-height: 300px;
+        }
+    }
+
+
+    /* =========================================================
+       4. COMPACT MOBILE PHONES (Max-width: 480px)
+       Para sa napakaliit na mobile screens para laging kasya ang card contents
+    ========================================================= */
+    @media (max-width: 480px) {
+        .card-container {
+            border-radius: 14px;
+            margin-top: 14px;
+            margin-bottom: 14px;
+        }
+
+        .card-header,
+        .card-body,
+        .card-footer {
+            padding: 14px 16px;
+        }
+
+        /* KPI Cards compact mobile view */
+        .kpi-card {
+            padding: 12px 14px;
+            border-radius: 16px;
+            gap: 12px;
+        }
+
+        .kpi-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+        }
+
+        .kpi-value {
+            font-size: 1.5rem;
+        }
+
+        .kpi-info span {
+            font-size: 0.78rem;
+        }
+
+        .kpi-date {
+            font-size: 0.65rem;
+        }
+
+        /* Chart title adjustments */
+        .chart-title h5 {
+            font-size: 1.1rem;
+        }
+
+        .chart-title p {
+            font-size: 0.8rem;
+        }
+
+        .chart-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            font-size: 1rem;
+        }
+    }
+
+    /* =========================================================
+       08. BUTTON SYSTEM — RESPONSIVE EXTENSION (ALL DEVICES)
+       Covers: Small Mobile, Tablets, Laptops, to 4K/Ultra-Wide
+    ========================================================= */
+
+    /* =========================================================
+       1. ULTRA-WIDE & 4K DESKTOPS (Min-width: 1920px)
+       Pagbibigay ng mas maluwag na padding para sa malalaking screen
+    ========================================================= */
+    @media (min-width: 1920px) {
+        .btn-xl {
+            height: 60px;
+            padding: 0 32px;
+            font-size: 1.05rem;
+        }
+
+        .btn-lg {
+            height: 52px;
+            padding: 0 26px;
+        }
+    }
+
+
+    /* =========================================================
+       2. TABLETS & SMALL LAPTOPS (Max-width: 1024px)
+    ========================================================= */
+    @media (max-width: 1024px) {
+        /* Touch optimization para sa tablets */
+        .btn {
+            min-height: 40px;
+        }
+    }
+
+
+    /* =========================================================
+       3. TABLET PORTRAIT & LARGE PHONES (Max-width: 768px)
+    ========================================================= */
+    @media (max-width: 768px) {
+        /* Paggawa ng block buttons o full width buttons kapag kinakailangan sa mobile forms */
+        .btn-block-mobile {
+            width: 100% !important;
+        }
+
+        /* Tooltip adjustments para sa maliliit na screen upang hindi ma-cut off sa gilid */
+        .btn-action[data-title]::after,
+        .action-btn[data-title]::after {
+            left: auto;
+            right: calc(100% + 10px);
+        }
+
+        .btn-action[data-title]::before,
+        .action-btn[data-title]::before {
+            left: auto;
+            right: calc(100% + 4px);
+            border-right: none;
+            border-left: 6px solid var(--text-primary);
+        }
+    }
+
+
+    /* =========================================================
+       4. COMPACT MOBILE PHONES (Max-width: 480px)
+       Sinisigurong komportable i-tap ang buttons gamit ang daliri (Touch target size)
+    ========================================================= */
+    @media (max-width: 480px) {
+        /* Palakihin nang kaunti ang touch area ng action buttons sa mobile para hindi mapindot ang katabi */
+        .action-buttons .action-btn,
+        .btn-action {
+            width: 36px;
+            height: 36px;
+        }
+
+        .btn-action-sm {
+            width: 32px;
+            height: 32px;
+        }
+
+        /* Gawing full width ang XL buttons sa napakaliit na mobile screens kung kailangan */
+        .btn-xl {
+            width: 100%;
+        }
+    }
+
+    /* =========================================================
+       09. FORM SYSTEM — RESPONSIVE EXTENSION (ALL DEVICES)
+       Covers: Small Mobile, Tablets, Laptops, to 4K/Ultra-Wide
+    ========================================================= */
+
+    /* =========================================================
+       1. ULTRA-WIDE & 4K DESKTOPS (Min-width: 1920px)
+       Pagbibigay ng mas maluwag na margin at spacing sa malalaking monitor
+    ========================================================= */
+    @media (min-width: 1920px) {
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .filter-grid-custom {
+            gap: 20px;
+        }
+    }
+
+
+    /* =========================================================
+       2. LARGE SCREENS & LAPTOPS (Max-width: 1400px)
+       Custom filter grid breaks to 3 columns
+    ========================================================= */
+    @media (max-width: 1400px) {
+        .filter-grid-custom {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+        }
+    }
+
+
+    /* =========================================================
+       3. TABLETS & SMALL LAPTOPS (Max-width: 992px)
+       Custom filter grid breaks to 2 columns
+    ========================================================= */
+    @media (max-width: 992px) {
+        .filter-grid-custom {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+        }
+    }
+
+
+    /* =========================================================
+       4. TABLET PORTRAIT & LARGE PHONES (Max-width: 768px)
+    ========================================================= */
+    @media (max-width: 768px) {
+        /* Form groups spacing adjustment para sa mobile */
+        .form-group {
+            margin-bottom: 16px;
+            gap: 6px;
+        }
+
+        /* Form controls touch target optimization (min-height para madaling pindutin) */
+        .form-group input,
+        .form-group select,
+        .form-group textarea,
+        .form-control {
+            min-height: 42px;
+            font-size: 14px; /* Iwas automatic zoom-in ng iOS sa mga inputs kapag 16px pataas o standard 14px safe */
+        }
+
+        /* Filter grid collapses to single column */
+        .filter-grid-custom {
+            grid-template-columns: 1fr;
+            gap: 14px;
+        }
+
+        .filter-grid-custom .filter-actions,
+        .filter-grid-custom .filter-actions .btn {
+            width: 100%;
+        }
+    }
+
+
+    /* =========================================================
+       5. COMPACT MOBILE PHONES (Max-width: 480px)
+    ========================================================= */
+    @media (max-width: 480px) {
+        .form-group {
+            margin-bottom: 14px;
+        }
+
+        /* Custom Checkbox touch area enhancement para sa mas madaling pag-tap */
+        .chk {
+            padding: 4px 0;
+        }
+
+        .chk-box {
+            width: 20px;
+            height: 20px;
+        }
+
+        .chk-box::after {
+            width: 6px;
+            height: 10px;
+        }
+    }
+
+    /* =========================================================
+       10. TABLE SYSTEM — RESPONSIVE EXTENSION (ALL DEVICES)
+       Covers: Small Mobile, Tablets, Laptops, to 4K/Ultra-Wide
+    ========================================================= */
+
+    /* =========================================================
+       1. ULTRA-WIDE & 4K DESKTOPS (Min-width: 1920px)
+       Pagbibigay ng mas maluwag at executive padding sa malalaking monitor
+    ========================================================= */
+    @media (min-width: 1920px) {
+        .table-wrapper {
+            margin-bottom: 24px;
+            border-radius: var(--radius-xl);
+        }
+
+        .table-wrapper thead th {
+            padding: 16px 22px;
+            font-size: 12px;
+        }
+
+        .table-wrapper tbody td {
+            padding: 18px 22px;
+            font-size: 13.5px;
+        }
+
+        .table-wrapper tfoot td {
+            padding: 16px 22px;
+        }
+    }
+
+
+    /* =========================================================
+       2. TABLETS & SMALL LAPTOPS (Max-width: 1024px)
+    ========================================================= */
+    @media (max-width: 1024px) {
+        .table-wrapper thead th {
+            padding: 12px 16px;
+        }
+
+        .table-wrapper tbody td {
+            padding: 13px 16px;
+        }
+    }
+
+
+    /* =========================================================
+       3. TABLET PORTRAIT & LARGE PHONES (Max-width: 768px)
+    ========================================================= */
+    @media (max-width: 768px) {
+        .table-wrapper {
+            border-radius: var(--radius-md);
+            margin-bottom: 16px;
+        }
+
+        .table-wrapper thead th {
+            padding: 11px 14px;
+            font-size: 11px;
+        }
+
+        .table-wrapper tbody td {
+            padding: 12px 14px;
+            font-size: 12px;
+        }
+
+        .table-wrapper tfoot td {
+            padding: 11px 14px;
+        }
+
+        /* Paliitin ang min-width ng mga espesyal na kolum para madaling mag-scroll sa mobile */
+        .table-wrapper .candidate-name {
+            min-width: 150px;
+        }
+
+        .table-wrapper .endo-code {
+            min-width: 120px;
+        }
+
+        .table-wrapper .date-column {
+            min-width: 140px;
+        }
+    }
+
+
+    /* =========================================================
+       4. COMPACT MOBILE PHONES (Max-width: 480px)
+       Para sa napakaliit na mobile screens para laging swak ang data display
+    ========================================================= */
+    @media (max-width: 480px) {
+        .table-wrapper thead th {
+            padding: 10px 12px;
+            font-size: 10.5px;
+        }
+
+        .table-wrapper tbody td {
+            padding: 10px 12px;
+            font-size: 11.5px;
+        }
+
+        .table-empty {
+            padding: 36px 16px;
+            font-size: 12px;
+        }
+    }
+
+
+    /* =========================================================
+       5. TABLE WRAPPER CUSTOM SCROLLBAR (Smooth Touch & Desktop)
+    ========================================================= */
+    .table-wrapper::-webkit-scrollbar {
+        height: 6px;
+    }
+
+    .table-wrapper::-webkit-scrollbar-track {
+        background: var(--bg-light);
+        border-radius: var(--radius-pill);
+    }
+
+    .table-wrapper::-webkit-scrollbar-thumb {
+        background: rgba(var(--primary-rgb), 0.3);
+        border-radius: var(--radius-pill);
+        transition: background var(--transition-fast);
+    }
+
+    .table-wrapper::-webkit-scrollbar-thumb:hover {
+        background: rgba(var(--primary-rgb), 0.6);
+    }
+
+    /* =========================================================
+       11. BADGE SYSTEM — RESPONSIVE EXTENSION (ALL DEVICES)
+       Covers: Small Mobile, Tablets, Laptops, to 4K/Ultra-Wide
+    ========================================================= */
+
+    /* =========================================================
+       1. ULTRA-WIDE & 4K DESKTOPS (Min-width: 1920px)
+       Pagbibigay ng mas komportableng padding at typography scaling
+    ========================================================= */
+    @media (min-width: 1920px) {
+        .badge-status,
+        .app-badge,
+        .badge-rerun,
+        .inquiry-status {
+            padding: 6px 14px;
+            font-size: 12px;
+        }
+
+        .badge-verification {
+            min-height: 30px;
+            padding: 0 14px;
+            font-size: .72rem;
+        }
+
+        .ageing-badge {
+            padding: 6px 12px;
+            font-size: 12.5px;
+        }
+
+        .badge-qa {
+            min-width: 90px;
+            padding: 6px 11px;
+            font-size: 10px;
+        }
+    }
+
+
+    /* =========================================================
+       2. TABLETS & SMALL LAPTOPS (Max-width: 1024px)
+    ========================================================= */
+    @media (max-width: 1024px) {
+        .badge-status,
+        .app-badge,
+        .badge-rerun,
+        .inquiry-status {
+            padding: 4px 10px;
+            font-size: 11px;
+        }
+    }
+
+
+    /* =========================================================
+       3. TABLET PORTRAIT & LARGE PHONES (Max-width: 768px)
+    ========================================================= */
+    @media (max-width: 768px) {
+        .badge-status,
+        .app-badge,
+        .badge-rerun,
+        .inquiry-status {
+            padding: 4px 9px;
+            font-size: 11px;
+            gap: 4px;
+        }
+
+        .badge-verification {
+            min-height: 24px;
+            padding: 0 9px;
+            font-size: .62rem;
+        }
+
+        .ageing-badge {
+            padding: 4px 8px;
+            font-size: 11px;
+            gap: 5px;
+        }
+
+        .ageing-badge i {
+            font-size: 10px;
+        }
+
+        .badge-qa {
+            min-width: 74px;
+            padding: 4px 7px;
+            font-size: 8.5px;
+        }
+    }
+
+
+    /* =========================================================
+       4. COMPACT MOBILE PHONES (Max-width: 480px)
+       Para sa napakaliit na mobile screens upang laging readable ang status text
+    ========================================================= */
+    @media (max-width: 480px) {
+        .badge-status,
+        .app-badge,
+        .badge-rerun,
+        .inquiry-status {
+            padding: 3px 8px;
+            font-size: 10.5px;
+        }
+
+        .badge-qa {
+            min-width: 68px;
+            padding: 3px 6px;
+            font-size: 8px;
+        }
+    }
+
+    /* =========================================================
+       12. CHART COMPONENTS — RESPONSIVE EXTENSION (ALL DEVICES)
+       Covers: Small Mobile, Tablets, Laptops, to 4K/Ultra-Wide
+    ========================================================= */
+
+    /* =========================================================
+       1. ULTRA-WIDE & 4K DESKTOPS (Min-width: 1920px)
+       Pagbibigay ng mas maluwag na padding at mas mataas na chart container
+    ========================================================= */
+    @media (min-width: 1920px) {
+        .chart-header {
+            padding: 22px 32px;
+        }
+
+        .chart-body {
+            padding: 32px;
+        }
+
+        .chart-container {
+            height: 420px;
+        }
+
+        .chart-footer {
+            padding: 16px 32px;
+        }
+
+        .chart-empty {
+            height: 380px;
+        }
+    }
+
+
+    /* =========================================================
+       2. TABLETS & SMALL LAPTOPS (Max-width: 1024px)
+    ========================================================= */
+    @media (max-width: 1024px) {
+        .chart-container {
+            height: 320px;
+        }
+
+        .chart-empty {
+            height: 280px;
+        }
+    }
+
+
+    /* =========================================================
+       3. TABLET PORTRAIT & LARGE PHONES (Max-width: 768px)
+    ========================================================= */
+    @media (max-width: 768px) {
+        /* Chart Header nagiging stacked para hindi maipit ang title at actions */
+        .chart-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 16px 18px;
+        }
+
+        .chart-actions {
+            width: 100%;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .chart-body {
+            padding: 18px;
+        }
+
+        /* Paliitin ang taas ng chart container para kasya sa mobile screen */
+        .chart-container {
+            height: 260px;
+        }
+
+        .chart-legend {
+            gap: 10px;
+            margin-top: 14px;
+            padding-top: 12px;
+        }
+
+        .chart-legend-item {
+            font-size: 11.5px;
+        }
+
+        .chart-footer {
+            padding: 12px 18px;
+        }
+
+        .chart-empty {
+            height: 240px;
+            padding: 24px 16px;
+        }
+    }
+
+
+    /* =========================================================
+       4. COMPACT MOBILE PHONES (Max-width: 480px)
+       Para sa napakaliit na mobile screens upang laging readable at neat ang charts
+    ========================================================= */
+    @media (max-width: 480px) {
+        .chart-header {
+            padding: 14px 16px;
+        }
+
+        .chart-body {
+            padding: 14px;
+        }
+
+        .chart-container {
+            height: 220px;
+        }
+
+        .chart-title {
+            font-size: 0.92rem;
+        }
+
+        .chart-subtitle {
+            font-size: 0.72rem;
+        }
+
+        .chart-footer {
+            padding: 10px 16px;
+            font-size: 11.5px;
+        }
+
+        .chart-empty {
+            height: 200px;
+        }
+
+        .chart-empty i {
+            font-size: 1.6rem;
+        }
+    }
+
+    /* =========================================================
+       13. DROPIFY — RESPONSIVE EXTENSION (ALL DEVICES)
+       Covers: Small Mobile, Tablets, Laptops, to 4K/Ultra-Wide
+    ========================================================= */
+
+    /* =========================================================
+       1. ULTRA-WIDE & 4K DESKTOPS (Min-width: 1920px)
+       Pagbibigay ng mas maluwag na taas at padding para sa malalaking monitor
+    ========================================================= */
+    @media (min-width: 1920px) {
+        .dropify-wrapper {
+            min-height: 240px;
+        }
+    }
+
+
+    /* =========================================================
+       2. TABLETS & SMALL LAPTOPS (Max-width: 1024px)
+    ========================================================= */
+    @media (max-width: 1024px) {
+        .dropify-wrapper {
+            min-height: 180px;
+        }
+    }
+
+
+    /* =========================================================
+       3. TABLET PORTRAIT & LARGE PHONES (Max-width: 768px)
+    ========================================================= */
+    @media (max-width: 768px) {
+        .dropify-wrapper {
+            min-height: 150px;
+        }
+
+        /* Paliitin ang icon at text sa mobile para hindi masikip sa drop zone */
+        .dropify-wrapper .dropify-message i {
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+
+        .dropify-wrapper .dropify-message p {
+            font-size: 12px;
+        }
+
+        /* Palakihin nang kaunti ang touch target ng clear button sa mobile para madaling ma-tap */
+        .dropify-wrapper .dropify-clear {
+            padding: 6px 12px !important;
+            font-size: 12px;
+        }
+    }
+
+
+    /* =========================================================
+       4. COMPACT MOBILE PHONES (Max-width: 480px)
+       Para sa napakaliit na mobile screens para laging swak ang upload area
+    ========================================================= */
+    @media (max-width: 480px) {
+        .dropify-wrapper {
+            min-height: 130px;
+            border-radius: var(--radius-sm);
+        }
+
+        .dropify-wrapper .dropify-message i {
+            font-size: 26px;
+            margin-bottom: 6px;
+        }
+
+        .dropify-wrapper .dropify-message p {
+            font-size: 11.5px;
+        }
+
+        .dropify-wrapper .dropify-filename,
+        .dropify-wrapper .dropify-errors-container ul li {
+            font-size: 11px;
+        }
+    }
+
+    /* =========================================================
+       14. DATATABLES — RESPONSIVE EXTENSION (ALL DEVICES)
+       Covers: Small Mobile, Tablets, Laptops, to 4K/Ultra-Wide
+    ========================================================= */
+
+    /* =========================================================
+       1. ULTRA-WIDE & 4K DESKTOPS (Min-width: 1920px)
+       Pagbibigay ng mas maluwag na espasyo at mas malaking search box sa malalaking monitor
+    ========================================================= */
+    @media (min-width: 1920px) {
+        .dataTables_wrapper .table-top {
+            padding-bottom: 24px;
+        }
+
+        .dataTables_wrapper .dataTables_filter input[type="search"] {
+            width: 360px;
+            height: 46px;
+        }
+
+        .dataTables_wrapper .dataTables_filter input[type="search"]:focus {
+            width: 400px;
+        }
+
+        .dataTables_wrapper table.dataTable thead th {
+            padding: 18px 20px;
+        }
+
+        .dataTables_wrapper .table-body table.dataTable tbody td {
+            padding: 18px 20px;
+        }
+
+        .dataTables_wrapper .table-bottom {
+            padding: 16px 20px;
+            margin-top: 18px;
+        }
+    }
+
+
+    /* =========================================================
+       2. TABLETS & SMALL LAPTOPS (Max-width: 1024px)
+    ========================================================= */
+    @media (max-width: 1024px) {
+        .dataTables_wrapper .dataTables_filter input[type="search"] {
+            width: 240px;
+        }
+
+        .dataTables_wrapper .dataTables_filter input[type="search"]:focus {
+            width: 280px;
+        }
+    }
+
+
+    /* =========================================================
+       3. TABLET PORTRAIT & LARGE PHONES (Max-width: 768px)
+    ========================================================= */
+    @media (max-width: 768px) {
+        .dataTables_wrapper .table-top {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 12px;
+            padding-bottom: 14px;
+        }
+
+        .dataTables_wrapper .table-length {
+            width: 100%;
+        }
+
+        .dataTables_wrapper .dataTables_length label {
+            width: 100%;
+            justify-content: space-between;
+        }
+
+        .dataTables_wrapper .table-search {
+            width: 100%;
+            margin-left: 0;
+        }
+
+        .dataTables_wrapper .dataTables_filter {
+            width: 100%;
+        }
+
+        .dataTables_wrapper .dataTables_filter input[type="search"],
+        .dataTables_wrapper .dataTables_filter input[type="search"]:focus {
+            width: 100% !important;
+        }
+
+        .dataTables_wrapper .table-bottom {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 14px;
+            padding: 12px;
+        }
+
+        .dataTables_wrapper .table-info {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .dataTables_wrapper .table-pagination {
+            width: 100%;
+            margin-left: 0;
+            overflow-x: auto;
+            display: flex;
+            justify-content: center;
+        }
+
+        .dataTables_wrapper .dataTables_paginate {
+            width: max-content;
+            max-width: 100%;
+            overflow-x: auto;
+        }
+    }
+
+
+    /* =========================================================
+       4. COMPACT MOBILE PHONES (Max-width: 480px)
+       Para sa napakaliit na mobile screens upang laging swak at madaling i-tap
+    ========================================================= */
+    @media (max-width: 480px) {
+        .dataTables_wrapper .dataTables_length select {
+            width: 68px;
+            height: 36px;
+            font-size: 12px;
+        }
+
+        .dataTables_wrapper .dataTables_filter input[type="search"] {
+            height: 38px;
+            font-size: 12px;
+        }
+
+        .dataTables_wrapper .dataTables_paginate .paginate_button {
+            min-width: 32px;
+            height: 32px;
+            padding: 0 8px !important;
+            font-size: 11px;
+        }
+    }
+
+    /* =========================================================
+       15. THIRD-PARTY COMPONENTS — RESPONSIVE EXTENSION (ALL DEVICES)
+       Covers: Small Mobile, Tablets, Laptops, to 4K/Ultra-Wide
+    ========================================================= */
+
+    /* =========================================================
+       1. ULTRA-WIDE & 4K DESKTOPS (Min-width: 1920px)
+       Pagbibigay ng mas komportableng sizing para sa malalaking monitor
+    ========================================================= */
+    @media (min-width: 1920px) {
+        .flatpickr-calendar {
+            width: 340px;
+            padding: 12px;
+        }
+
+        .flatpickr-day {
+            width: 40px;
+            height: 40px;
+            max-width: 40px;
+            line-height: 40px;
+        }
+
+        .swal2-popup {
+            width: 32rem;
+        }
+    }
+
+
+    /* =========================================================
+       2. TABLETS & LAPTOPS (Max-width: 1024px)
+    ========================================================= */
+    @media (max-width: 1024px) {
+        /* Siguraduhing maayos ang laki ng Select2 at SweetAlerts sa mid-size screens */
+        .select2-selection {
+            min-height: 42px;
+        }
+
+        .select2-selection__rendered {
+            line-height: 40px !important;
+        }
+
+        .select2-selection__arrow {
+            height: 40px !important;
+        }
+    }
+
+
+    /* =========================================================
+       3. TABLET PORTRAIT & LARGE PHONES (Max-width: 768px)
+    ========================================================= */
+    @media (max-width: 768px) {
+        /* Flatpickr Calendar responsive scaling para hindi sumabog sa mobile */
+        .flatpickr-calendar {
+            width: calc(100vw - 32px) !important;
+            max-width: 320px;
+            margin: 0 auto;
+        }
+
+        /* SweetAlert2 mobile popup safety */
+        .swal2-popup {
+            width: 90% !important;
+            max-width: 400px;
+            padding: 1.25rem;
+        }
+
+        .swal2-actions {
+            flex-direction: column-reverse;
+            width: 100%;
+            gap: 8px !important;
+        }
+
+        .swal2-actions .swal2-confirm,
+        .swal2-actions .swal2-cancel {
+            width: 100% !important;
+            margin: 0 !important;
+        }
+    }
+
+
+    /* =========================================================
+       4. COMPACT MOBILE PHONES (Max-width: 480px)
+       Para sa napakaliit na mobile screens upang laging touch-friendly
+    ========================================================= */
+    @media (max-width: 480px) {
+        .flatpickr-calendar {
+            width: calc(100vw - 20px) !important;
+            padding: 6px;
+            border-radius: var(--radius-md);
+        }
+
+        .flatpickr-months,
+        .flatpickr-months .flatpickr-month,
+        .flatpickr-current-month {
+            height: 44px;
+        }
+
+        .flatpickr-day {
+            width: 34px;
+            height: 34px;
+            max-width: 34px;
+            line-height: 34px;
+            font-size: .75rem;
+        }
+
+        /* Select2 touch target enhancement sa napakaliit na phone */
+        .select2-selection {
+            min-height: 44px;
+        }
+
+        .select2-selection__rendered {
+            line-height: 42px !important;
+            font-size: 14px;
+        }
+
+        .select2-selection__arrow {
+            height: 42px !important;
+        }
+    }
+
+
+    /* =========================================================
+       5. LANDSCAPE MOBILE VIEWPORT SAFETY
+       Para sa mga mobile devices na naka-higa (landscape)
+    ========================================================= */
+    @media (max-height: 500px) and (orientation: landscape) {
+        .swal2-popup {
+            max-height: 85vh;
+            overflow-y: auto;
+        }
+    }
+
+    /* =========================================================
+       16. UTILITIES — RESPONSIVE EXTENSION (ALL DEVICES)
+       Covers: Small Mobile, Tablets, Laptops, to 4K/Ultra-Wide
+    ========================================================= */
+
+    /* =========================================================
+       1. RESPONSIVE DISPLAY HELPERS (Mobile vs Desktop Views)
+       Ginagamit para magtago o magpakita ng elements depende sa screen size
+    ========================================================= */
+
+    /* Mobile Only Views (Lilitaw lang sa mobile/tablets, itatago sa desktop) */
+    @media (min-width: 993px) {
+        .d-mobile-only {
+            display: none !important;
+        }
+    }
+
+    /* Desktop Only Views (Lilitaw lang sa desktop, itatago sa maliliit na mobile) */
+    @media (max-width: 768px) {
+        .d-desktop-only {
+            display: none !important;
+        }
+    }
+
+
+    /* =========================================================
+       2. RESPONSIVE FLEX DIRECTION HELPERS
+       Para sa mga elementong magiging patayo (column) sa mobile at pahiga (row) sa desktop
+    ========================================================= */
+    @media (max-width: 768px) {
+        .flex-row-mobile {
+            flex-direction: column !important;
+        }
+
+        .align-center-mobile {
+            align-items: stretch !important;
+        }
+
+        .justify-between-mobile {
+            justify-content: flex-start !important;
+        }
+    }
+
+
+    /* =========================================================
+       3. RESPONSIVE WIDTH HELPERS FOR MOBILE
+       Ginagawang full width (100%) ang mga elemento kapag nasa maliliit na screen
+    ========================================================= */
+    @media (max-width: 768px) {
+        .w-25-mobile,
+        .w-50-mobile,
+        .w-75-mobile {
+            width: 100% !important;
+        }
+    }
+
+
+    /* =========================================================
+       4. ULTRA-WIDE & 4K MONITOR ENHANCEMENTS (Min-width: 1920px)
+       Pagbibigay ng karagdagang spacing o display toggles para sa malalaking screen
+    ========================================================= */
+    @media (min-width: 1920px) {
+        /* Pwedeng magdagdag ng executive spacing overrides dito kung kinakailangan */
+    }

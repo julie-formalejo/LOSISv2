@@ -1,0 +1,158 @@
+/* =========================================================
+   PORTAL FOOTER (Enhanced Executive Standard - Core CSS)
+   PREMIUM / EXECUTIVE / MODERN SYSTEM DESIGN
+========================================================= */
+
+.portal-footer {
+    position: fixed;
+    bottom: 0;
+    left: 250px; /* Itinugma sa bagong lapad ng sidebar (250px) */
+    width: calc(100% - 250px);
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 28px;
+    background: rgba(255, 255, 255, .92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-top: 1px solid var(--border, #E2E8F0);
+    box-shadow: 0 -4px 20px rgba(15, 23, 42, .03);
+    font-size: .8rem;
+    color: var(--text-muted, #64748B);
+    z-index: var(--z-footer, 100);
+    transition: left .25s ease, width .25s ease;
+}
+
+
+/* =========================================================
+   LEFT SECTION (Copyright & Company)
+========================================================= */
+
+.footer-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    white-space: nowrap;
+}
+
+.footer-copyright {
+    color: var(--text-secondary, #475569);
+    font-weight: 500;
+}
+
+.footer-copyright strong {
+    color: var(--text-primary, #0F172A);
+    font-weight: 700;
+    letter-spacing: -.01em;
+}
+
+.footer-rights-text {
+    color: var(--text-muted, #94A3B8);
+    font-size: .75rem;
+    border-left: 1px solid var(--border, #E2E8F0);
+    padding-left: 10px;
+}
+
+
+/* =========================================================
+   CENTER SECTION (System Status & Version Badge)
+========================================================= */
+
+.footer-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex: 1;
+    padding: 0 20px;
+    white-space: nowrap;
+}
+
+.system-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: rgba(34, 197, 94, .06);
+    border: 1px solid rgba(34, 197, 94, .15);
+}
+
+.status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #16A34A;
+    box-shadow: 0 0 0 3px rgba(22, 163, 74, .15);
+}
+
+.status-dot.animate-pulse {
+    animation: pulseStatus 2s infinite ease-in-out;
+}
+
+@keyframes pulseStatus {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: .4; transform: scale(.85); }
+}
+
+.status-text {
+    color: #15803D;
+    font-size: .75rem;
+    font-weight: 600;
+    letter-spacing: .01em;
+}
+
+.footer-divider {
+    color: var(--border, #CBD5E1);
+    font-size: .7rem;
+}
+
+.system-version {
+    font-family: monospace;
+    font-size: .72rem;
+    font-weight: 600;
+    color: var(--text-muted, #64748B);
+    background: var(--bg-light, #F1F5F9);
+    padding: 2px 8px;
+    border-radius: 6px;
+    border: 1px solid var(--border, #E2E8F0);
+}
+
+
+/* =========================================================
+   RIGHT SECTION (Enterprise Links)
+========================================================= */
+
+.footer-right {
+    display: flex;
+    align-items: center;
+}
+
+.footer-nav {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.footer-link {
+    color: var(--text-muted, #64748B);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: .78rem;
+    transition: color .18s ease, transform .18s ease;
+}
+
+.footer-link:hover {
+    color: var(--primary, #2563EB);
+}
+
+
+/* =========================================================
+   SIDEBAR COLLAPSED STATE SUPPORT
+========================================================= */
+
+.sidebar-collapsed .portal-footer {
+    left: 76px;
+    width: calc(100% - 76px);
+}

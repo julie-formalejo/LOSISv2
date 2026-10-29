@@ -1,0 +1,51 @@
+/* =========================================================
+   HEADER & SYSTEM COMPONENTS — RESPONSIVE EXTENSION
+========================================================= */
+
+@media (max-width: 992px) {
+    .portal-header {
+        padding: 0 16px;
+    }
+    .header-search-wrapper {
+        width: 220px;
+        max-width: 220px;
+        flex: 0 0 220px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-search-wrapper {
+        display: none;
+    }
+    .header-title {
+        font-size: 1.1rem;
+    }
+    .user-info {
+        display: none;
+    }
+    .user-trigger i {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .portal-header {
+        padding: 0 12px;
+        gap: 10px;
+    }
+    .header-right {
+        gap: 10px;
+    }
+}
+
+/* =========================================================
+   REDUCED MOTION SUPPORT
+========================================================= */
+@media (prefers-reduced-motion: reduce) {
+    .dropdown-menu,
+    .notification-dropdown,
+    .user-profile-dropdown .dropdown-menu {
+        animation: none !important;
+        transition: none !important;
+    }
+}

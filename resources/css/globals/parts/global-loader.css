@@ -1,0 +1,266 @@
+/* =========================================================
+   GLOBAL LOADER (Core / Base Styles)
+   PREMIUM EXECUTIVE / MODERN SYSTEM DESIGN
+========================================================= */
+
+.global-loader {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(15, 23, 42, .28);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .25s ease, visibility .25s ease;
+    z-index: 99999;
+}
+
+.global-loader.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* =========================================================
+   PREMIUM LOADER PANEL
+========================================================= */
+
+.global-loader-card {
+    position: relative;
+    width: 100%;
+    max-width: 380px;
+    padding: 24px 24px 26px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, .98);
+    border: 1px solid rgba(226, 232, 240, .9);
+    box-shadow: 0 24px 60px rgba(15, 23, 42, .16), 0 6px 20px rgba(15, 23, 42, .05);
+    overflow: hidden;
+    animation: loaderEnter .35s cubic-bezier(.22, 1, .36, 1);
+}
+
+
+/* =========================================================
+   SUBTLE TOP LIGHT & SHINE
+========================================================= */
+
+.global-loader-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 15%;
+    right: 15%;
+    height: 3px;
+    border-radius: 0 0 10px 10px;
+    background: linear-gradient(90deg, transparent, var(--primary-light, #93C5FD), var(--primary, #2563EB), var(--primary-light, #93C5FD), transparent);
+    opacity: .95;
+}
+
+.global-loader-card::after {
+    content: "";
+    position: absolute;
+    top: -100%;
+    left: -30%;
+    width: 35%;
+    height: 300%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .6), transparent);
+    transform: rotate(18deg);
+    animation: loaderShine 3.5s ease-in-out infinite;
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   LOADER ICON CONTAINER & RINGS
+========================================================= */
+
+.global-loader-icon {
+    position: relative;
+    flex: 0 0 52px;
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(37, 99, 235, .06);
+    color: var(--primary, #2563EB);
+    border: 1px solid rgba(37, 99, 235, .15);
+}
+
+.global-loader-icon::before {
+    content: "";
+    position: absolute;
+    inset: 5px;
+    border-radius: 50%;
+    border: 2px solid rgba(37, 99, 235, .10);
+    border-top-color: var(--primary, #2563EB);
+    border-right-color: var(--primary-light, #93C5FD);
+    animation: loaderRotate 1.05s linear infinite;
+}
+
+.global-loader-icon::after {
+    content: "";
+    position: absolute;
+    inset: 10px;
+    border-radius: 50%;
+    border: 1px solid rgba(37, 99, 235, .12);
+    border-bottom-color: var(--primary, #2563EB);
+    animation: loaderRotateReverse 1.8s linear infinite;
+}
+
+.global-loader-icon i {
+    position: relative;
+    z-index: 3;
+    font-size: .85rem;
+    color: var(--primary, #2563EB);
+    opacity: .95;
+    animation: loaderIconPulse 1.8s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   CONTENT & STATUS
+========================================================= */
+
+.global-loader-content {
+    position: relative;
+    z-index: 4;
+    flex: 1;
+    min-width: 0;
+}
+
+.global-loader-status {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin: 0 0 4px;
+    color: var(--primary, #2563EB);
+    font-size: .6rem;
+    font-weight: 750;
+    letter-spacing: .12em;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.global-loader-status::before {
+    content: "";
+    width: 5px;
+    height: 5px;
+    flex: 0 0 5px;
+    border-radius: 50%;
+    background: var(--primary, #2563EB);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, .1);
+    animation: loaderStatusPulse 1.4s ease-in-out infinite;
+}
+
+.global-loader-title {
+    margin: 0;
+    color: var(--text-primary, #0F172A);
+    font-size: .9rem;
+    font-weight: 750;
+    letter-spacing: -.01em;
+    line-height: 1.35;
+}
+
+.global-loader-text {
+    margin: 3px 0 0;
+    max-width: 260px;
+    color: var(--text-muted, #64748B);
+    font-size: .73rem;
+    font-weight: 450;
+    line-height: 1.45;
+}
+
+.global-loader-status span {
+    display: inline-block;
+    width: 3px;
+    height: 3px;
+    margin-left: 1px;
+    border-radius: 50%;
+    background: currentColor;
+    opacity: .3;
+    animation: loaderDot 1.3s ease-in-out infinite;
+}
+
+.global-loader-status span:nth-child(2) { animation-delay: .15s; }
+.global-loader-status span:nth-child(3) { animation-delay: .30s; }
+
+
+/* =========================================================
+   PROGRESS TRACK & BAR
+========================================================= */
+
+.global-loader-track {
+    position: absolute;
+    left: 24px;
+    right: 24px;
+    bottom: 0;
+    height: 2px;
+    background: rgba(226, 232, 240, .8);
+    overflow: hidden;
+}
+
+.global-loader-progress {
+    position: absolute;
+    top: 0;
+    left: -35%;
+    width: 35%;
+    height: 100%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, transparent, var(--primary-light, #93C5FD), var(--primary, #2563EB), var(--primary-light, #93C5FD), transparent);
+    box-shadow: 0 0 10px rgba(37, 99, 235, .3);
+    animation: loaderProgress 1.35s cubic-bezier(.4, 0, .2, 1) infinite;
+}
+
+
+/* =========================================================
+   KEYFRAME ANIMATIONS
+========================================================= */
+
+@keyframes loaderEnter {
+    0% { opacity: 0; transform: translateY(8px) scale(.985); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes loaderShine {
+    0% { left: -35%; opacity: 0; }
+    20% { opacity: .45; }
+    45%, 100% { left: 110%; opacity: 0; }
+}
+
+@keyframes loaderRotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes loaderRotateReverse {
+    from { transform: rotate(360deg); }
+    to { transform: rotate(0deg); }
+}
+
+@keyframes loaderIconPulse {
+    0%, 100% { transform: scale(.9); opacity: .65; }
+    50% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes loaderStatusPulse {
+    0%, 100% { transform: scale(.75); opacity: .4; }
+    50% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes loaderDot {
+    0%, 100% { opacity: .2; transform: translateY(0); }
+    50% { opacity: 1; transform: translateY(-1px); }
+}
+
+@keyframes loaderProgress {
+    0% { left: -35%; }
+    100% { left: 105%; }
+}

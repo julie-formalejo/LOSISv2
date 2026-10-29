@@ -1,0 +1,176 @@
+/* =========================================================
+   GLOBAL PAGE WELCOME LOADER (Ultra-Premium Executive)
+========================================================= */
+
+.welcome-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(15, 23, 42, 0.45); /* Malalim at eleganteng executive backdrop */
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    overflow: hidden;
+    z-index: 999999;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity .4s cubic-bezier(0.4, 0, 0.2, 1), visibility .4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* HIDE STATE */
+.welcome-loader.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* EXECUTIVE CARD CONTAINER */
+.loader-content-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 400px;
+    padding: 42px 32px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    border-radius: 24px;
+    box-shadow: 0 25px 60px rgba(15, 23, 42, 0.18),
+                0 0 0 1px rgba(255, 255, 255, 0.8) inset;
+    text-align: center;
+    overflow: hidden;
+    animation: loaderCardScale .5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* TOP GLOW BORDER ACCENT */
+.loader-card-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #2563EB, #60A5FA, #93C5FD);
+}
+
+/* LOGO */
+.loader-logo {
+    width: 140px;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    margin-bottom: 22px;
+    user-select: none;
+    pointer-events: none;
+    animation: loaderLogoFloat 3.5s ease-in-out infinite;
+}
+
+/* EXECUTIVE BADGE */
+.loader-badge-wrapper {
+    margin-bottom: 16px;
+}
+
+.loader-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: rgba(37, 99, 235, 0.06);
+    border: 1px solid rgba(37, 99, 235, 0.14);
+    color: var(--primary, #2563EB);
+    font-size: 0.68rem;
+    font-weight: 750;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--primary, #2563EB);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+    animation: pulseDot 2s infinite ease-in-out;
+}
+
+/* SUBTITLE */
+.loader-subtitle {
+    margin: 0 0 28px 0;
+    font-size: 0.84rem;
+    font-weight: 500;
+    color: var(--text-muted, #64748B);
+    letter-spacing: 0.01em;
+    animation: loaderTextPulse 2s ease-in-out infinite;
+}
+
+/* LOADER TRACK */
+.loader-track {
+    position: relative;
+    width: 180px;
+    height: 4px;
+    margin: 0 auto;
+    border-radius: 999px;
+    background: rgba(226, 232, 240, 0.8);
+    overflow: hidden;
+}
+
+/* MOVING DOT */
+.loader-dot {
+    position: absolute;
+    top: 50%;
+    left: -12px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--primary, #2563EB);
+    transform: translateY(-50%);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15), 0 0 14px rgba(37, 99, 235, 0.4);
+    animation: loaderDotMove 1.6s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+
+/* =========================================================
+   KEYFRAME ANIMATIONS
+========================================================= */
+
+@keyframes loaderCardScale {
+    from {
+        opacity: 0;
+        transform: translateY(16px) scale(0.96);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes loaderLogoFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+}
+
+@keyframes loaderTextPulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+}
+
+@keyframes pulseDot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+@keyframes loaderDotMove {
+    0% { left: -12px; }
+    50% { left: calc(100% - 12px); }
+    100% { left: -12px; }
+}

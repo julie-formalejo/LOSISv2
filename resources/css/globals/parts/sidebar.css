@@ -1,0 +1,293 @@
+/* =========================================================
+   PORTAL SIDEBAR (Core / Base Styles)
+   PREMIUM EXECUTIVE / MODERN SYSTEM DESIGN
+========================================================= */
+
+.portal-sidebar {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    width: 250px;
+    height: calc(100vh - 64px);
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-white, #FFFFFF);
+    border-right: 1px solid var(--border, #E2E8F0);
+    padding: 20px 16px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    transition: width .25s cubic-bezier(0.4, 0, 0.2, 1), padding .25s ease, transform .25s ease;
+    z-index: var(--z-sidebar, 1000);
+}
+
+
+/* =========================================================
+   LOGO SECTION
+========================================================= */
+
+.sidebar-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border-light, #F1F5F9);
+    transition: padding .25s ease;
+}
+
+.sidebar-logo img {
+    width: 140px;
+    max-width: 100%;
+    object-fit: contain;
+    transition: width .25s ease, opacity .2s ease;
+}
+
+
+/* =========================================================
+   SIDEBAR NAV HEADER (Category Label)
+========================================================= */
+
+.sidebar-nav-header {
+    font-size: .7rem;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--text-muted, #94A3B8);
+    font-weight: 700;
+    padding: 0 12px 10px 12px;
+    margin-top: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    transition: opacity .2s ease;
+}
+
+
+/* =========================================================
+   MENU CONTAINER
+========================================================= */
+
+.sidebar-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+}
+
+
+/* =========================================================
+   MENU ITEM STYLING
+========================================================= */
+
+.menu-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 44px;
+    padding: 0 12px;
+    border-radius: 10px;
+    color: var(--text-secondary, #475569);
+    text-decoration: none;
+    font-size: .83rem;
+    font-weight: 500;
+    white-space: nowrap;
+    transition: background .20s ease, color .20s ease, padding .25s ease;
+}
+
+.menu-icon-wrapper {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background: var(--bg-light, #F8FAFC);
+    color: var(--text-muted, #64748B);
+    transition: background .20s ease, color .20s ease;
+    flex-shrink: 0;
+}
+
+.menu-item i {
+    font-size: .9rem;
+}
+
+
+/* =========================================================
+   MENU HOVER STATE
+========================================================= */
+
+.menu-item:hover {
+    background: var(--sidebar-hover-bg, #F1F5F9);
+    color: var(--sidebar-hover-color, #0F172A);
+}
+
+.menu-item:hover .menu-icon-wrapper {
+    background: var(--primary-light, #DBEAFE);
+    color: var(--primary, #2563EB);
+}
+
+
+/* =========================================================
+   MENU ACTIVE STATE
+========================================================= */
+
+.menu-item.active {
+    background: linear-gradient(90deg, rgba(37, 99, 235, .1), rgba(37, 99, 235, .03));
+    color: var(--primary, #2563EB);
+    font-weight: 600;
+}
+
+.menu-item.active .menu-icon-wrapper {
+    background: var(--primary, #2563EB);
+    color: #FFFFFF;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, .25);
+}
+
+.menu-item.active::before {
+    content: '';
+    position: absolute;
+    left: -16px;
+    top: 8px;
+    bottom: 8px;
+    width: 4px;
+    background: var(--primary, #2563EB);
+    border-radius: 0 4px 4px 0;
+    transition: left .25s ease;
+}
+
+
+/* =========================================================
+   SIDEBAR FOOTER SUPPORT CARD
+========================================================= */
+
+.sidebar-footer-info {
+    margin-top: auto;
+    padding-top: 16px;
+    border-top: 1px solid var(--border-light, #F1F5F9);
+    transition: opacity .2s ease;
+}
+
+.sidebar-support-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 10px;
+    background: var(--bg-light, #F8FAFC);
+    border: 1px solid var(--border, #E2E8F0);
+}
+
+.sidebar-support-card i {
+    font-size: 1.1rem;
+    color: var(--primary, #2563EB);
+}
+
+.support-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.support-text span {
+    font-size: .72rem;
+    color: var(--text-muted, #64748B);
+    font-weight: 500;
+}
+
+.support-text a {
+    font-size: .78rem;
+    font-weight: 600;
+    color: var(--primary, #2563EB);
+    text-decoration: none;
+}
+
+.support-text a:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================================================
+   CONTENT SHIFT & COLLAPSED STATES (BULLETPROOF / DUAL SELECTORS)
+========================================================= */
+
+.portal-content {
+    margin-left: 250px;
+    margin-top: 64px;
+    padding: 24px;
+    transition: margin-left .25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Collapsed State (Sumusuporta sa Wrapper, Body, o Sidebar mismo) */
+.portal-wrapper.sidebar-collapsed .portal-sidebar,
+body.sidebar-collapsed .portal-sidebar,
+.portal-sidebar.collapsed {
+    width: 78px !important;
+    padding: 20px 10px !important;
+}
+
+.portal-wrapper.sidebar-collapsed .portal-content,
+body.sidebar-collapsed .portal-content {
+    margin-left: 78px !important;
+}
+
+.portal-wrapper.sidebar-collapsed .sidebar-logo,
+body.sidebar-collapsed .sidebar-logo,
+.portal-sidebar.collapsed .sidebar-logo {
+    padding-bottom: 12px;
+}
+
+.portal-wrapper.sidebar-collapsed .sidebar-logo img,
+body.sidebar-collapsed .sidebar-logo img,
+.portal-sidebar.collapsed .sidebar-logo img {
+    width: 34px !important;
+}
+
+.portal-wrapper.sidebar-collapsed .sidebar-nav-header,
+.portal-wrapper.sidebar-collapsed .sidebar-footer-info,
+.portal-wrapper.sidebar-collapsed .menu-item span,
+body.sidebar-collapsed .sidebar-nav-header,
+body.sidebar-collapsed .sidebar-footer-info,
+body.sidebar-collapsed .menu-item span,
+.portal-sidebar.collapsed .sidebar-nav-header,
+.portal-sidebar.collapsed .sidebar-footer-info,
+.portal-sidebar.collapsed .menu-item span {
+    display: none !important;
+}
+
+.portal-wrapper.sidebar-collapsed .menu-item,
+body.sidebar-collapsed .menu-item,
+.portal-sidebar.collapsed .menu-item {
+    justify-content: center !important;
+    padding: 0 !important;
+    width: 56px;
+    height: 44px;
+    margin: 0 auto;
+}
+
+.portal-wrapper.sidebar-collapsed .menu-icon-wrapper,
+body.sidebar-collapsed .menu-icon-wrapper,
+.portal-sidebar.collapsed .menu-icon-wrapper {
+    margin: 0 !important;
+}
+
+.portal-wrapper.sidebar-collapsed .menu-item.active::before,
+body.sidebar-collapsed .menu-item.active::before,
+.portal-sidebar.collapsed .menu-item.active::before {
+    left: -10px !important;
+}
+
+
+/* =========================================================
+   SIDEBAR SCROLLBAR
+========================================================= */
+
+.portal-sidebar::-webkit-scrollbar {
+    width: 5px;
+}
+
+.portal-sidebar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.portal-sidebar::-webkit-scrollbar-thumb {
+    background: var(--border-dark, #CBD5E1);
+    border-radius: 999px;
+}

@@ -1,0 +1,53 @@
+/* =========================================================
+   LOSIS CONNECTION MONITOR — RESPONSIVE EXTENSION
+========================================================= */
+
+@media (max-width: 576px) {
+    .connection-lost-page {
+        padding: 16px;
+    }
+
+    .connection-lost-card {
+        max-width: 340px;
+        padding: 32px 24px 28px;
+        border-radius: 16px;
+    }
+
+    .connection-lost-icon {
+        width: 64px;
+        height: 64px;
+        margin-bottom: 18px;
+        font-size: 1.2rem;
+        border-radius: 16px;
+    }
+
+    .connection-lost-content h1 {
+        font-size: 1.15rem;
+    }
+
+    .connection-lost-content p {
+        font-size: 0.79rem;
+    }
+
+    .connection-retry-btn {
+        height: 42px;
+        font-size: 0.8rem;
+    }
+}
+
+/* =========================================================
+   REDUCED MOTION SUPPORT
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    .connection-lost-page,
+    .connection-lost-card,
+    .connection-lost-icon::before,
+    .connection-lost-icon span,
+    .connection-status-dot,
+    .connection-retry-btn,
+    .connection-retry-btn i {
+        animation: none !important;
+        transition: none !important;
+    }
+}
